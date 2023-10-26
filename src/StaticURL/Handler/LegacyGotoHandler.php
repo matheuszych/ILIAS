@@ -91,12 +91,11 @@ class LegacyGotoHandler implements Handler
         )) { // we cannot perform this in UnitTest e.g.
             // if anonymous: go to login page
             if ($user_id === 0 || $user_id === \ANONYMOUS_USER_ID) {
-                return false;
                 $url = "login.php?target="
                     . $orig_target . "&cmd=force_login&lang="
                     . $DIC->user()->getCurrentLanguage();
                 if ($DIC->http()->wrapper()->query()->has('soap_pw')) {
-                    $url = ilUtil::appendUrlParameterString(
+                    $url = \ilUtil::appendUrlParameterString(
                         $url,
                         'soap_pw=' . $DIC->http()->wrapper()->query()->retrieve(
                             'soap_pw',
@@ -105,7 +104,7 @@ class LegacyGotoHandler implements Handler
                     );
                 }
                 if ($DIC->http()->wrapper()->query()->has('ext_uid')) {
-                    $url = ilUtil::appendUrlParameterString(
+                    $url = \ilUtil::appendUrlParameterString(
                         $url,
                         'ext_uid=' . $DIC->http()->wrapper()->query()->retrieve(
                             'ext_uid',
@@ -122,7 +121,7 @@ class LegacyGotoHandler implements Handler
                         'failure',
                         sprintf(
                             $DIC->language()->txt("msg_no_perm_read_item"),
-                            ilObject::_lookupTitle(ilObject::_lookupObjId((int) $tarr[1]))
+                            \ilObject::_lookupTitle(\ilObject::_lookupObjId((int) $tarr[1]))
                         ),
                         true
                     );

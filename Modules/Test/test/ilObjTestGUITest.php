@@ -182,8 +182,6 @@ class ilObjTestGUITest extends ilTestBaseTestCase
 
     public function testMoveQuestionsObject(): void
     {
-        $_POST['q_id'] = 1;
-
         $ctrl_mock = $this->createMock(ilCtrl::class);
         $ctrl_mock
             ->expects($this->once())
