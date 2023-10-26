@@ -26,9 +26,9 @@ use PHPUnit\Framework\TestCase;
  * @version $Id$
  * @ingroup ModulesTest
  */
-class ilassMarkTest extends TestCase
+class assMarkTest extends TestCase
 {
-    /** @var $backupGlobals bool */
+    /** @var $backupGl^obals bool */
     protected $backupGlobals = false;
 
     /** @var  $ass_mark ASS_Mark */

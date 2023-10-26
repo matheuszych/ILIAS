@@ -26,7 +26,7 @@ use ILIAS\Refinery\Factory as Refinery;
 use ILIAS\Data;
 use ILIAS\UI\Component\Input\Field\Factory as FieldFactory;
 
-class ScoreSettingsTest extends ILIAS_UI_TestBase
+class ObjTestScoreSettingsTest extends ILIAS_UI_TestBase
 {
     public function testScoreSettingsBuild(): void
     {
