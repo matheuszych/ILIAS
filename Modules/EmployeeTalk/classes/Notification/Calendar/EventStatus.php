@@ -18,24 +18,11 @@
 
 declare(strict_types=1);
 
-//namespace ILIAS\Exercise\Setup;
+namespace ILIAS\EmployeeTalk\Notification\Calendar;
 
-use ILIAS\Setup;
-
-/**
- * @author Alexander Killing <killing@leifos.de>
- */
-class ilExerciseSetupAgent extends Setup\Agent\NullAgent
+enum EventStatus: string
 {
-    public function getUpdateObjective(Setup\Config $config = null): Setup\Objective
-    {
-        return new \ilDatabaseUpdateStepsExecutedObjective(new \ILIAS\Exercise\Setup\ilExerciseDBUpdateSteps());
-    }
-
-    public function getMigrations(): array
-    {
-        return [
-            new ilExerciseInstructionFilesMigration()
-        ];
-    }
+    case TENTATIVE = "TENTATIVE";
+    case CONFIRMED = "CONFIRMED";
+    case CANCELLED = "CANCELLED";
 }

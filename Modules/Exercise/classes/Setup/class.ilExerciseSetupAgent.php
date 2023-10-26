@@ -18,29 +18,27 @@
 
 declare(strict_types=1);
 
+//namespace ILIAS\Exercise\Setup;
+
 use ILIAS\Setup;
 
-class ilUserUpdateAgent extends Setup\Agent\NullAgent
+/**
+ * @author Alexander Killing <killing@leifos.de>
+ */
+class ilExerciseSetupAgent extends Setup\Agent\NullAgent
 {
     public function getUpdateObjective(Setup\Config $config = null): Setup\Objective
     {
-        $update_user_table = new ilDatabaseUpdateStepsExecutedObjective(
-            new ilUserTableUpdateSteps()
-        );
-
-        return new Setup\ObjectiveCollection(
-            'Database is updated for Services/User',
-            false,
-            $update_user_table
-        );
+        return new \ilDatabaseUpdateStepsExecutedObjective(new \ILIAS\Exercise\Setup\ilExerciseDBUpdateSteps());
     }
 
-    public function getStatusObjective(Setup\Metrics\Storage $storage): Setup\Objective
+    public function getMigrations(): array
     {
-        return new Setup\ObjectiveCollection(
-            'Services/User',
-            true,
-            new ilDatabaseUpdateStepsMetricsCollectedObjective($storage, new ilUserTableUpdateSteps())
-        );
+        return [
+            new ilExerciseInstructionFilesMigration(),
+            new ilExerciseSampleSolutionMigration(),
+            new ilExerciseTutorFeedbackFileMigration(),
+            new ilExerciseTutorTeamFeedbackFileMigration()
+        ];
     }
 }
