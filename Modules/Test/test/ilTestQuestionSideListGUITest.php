@@ -32,7 +32,7 @@ class ilTestQuestionSideListGUITest extends ilTestBaseTestCase
 
         $this->testObj = new ilTestQuestionSideListGUI(
             $this->createMock(ilCtrl::class),
-            $this->createMock(ilLanguage::class)
+            $this->createMock(ilLanguage::class),
         );
     }
 
@@ -51,7 +51,7 @@ class ilTestQuestionSideListGUITest extends ilTestBaseTestCase
     public function testQuestionSummaryData(): void
     {
         $expected = [
-            "test" => "Hello",
+            'test' => 'Hello',
         ];
         $this->testObj->setQuestionSummaryData($expected);
         $this->assertEquals($expected, $this->testObj->getQuestionSummaryData());
@@ -59,22 +59,26 @@ class ilTestQuestionSideListGUITest extends ilTestBaseTestCase
 
     public function testCurrentSequenceElement(): void
     {
-        $this->testObj->setCurrentSequenceElement(125);
-        $this->assertEquals(125, $this->testObj->getCurrentSequenceElement());
+        $currentSequenceElement = 125;
+        $this->testObj->setCurrentSequenceElement($currentSequenceElement);
+        $this->assertEquals($currentSequenceElement, $this->testObj->getCurrentSequenceElement());
     }
 
     public function testCurrentPresentationMode(): void
     {
-        $this->testObj->setCurrentPresentationMode("test");
-        $this->assertEquals("test", $this->testObj->getCurrentPresentationMode());
+        $currentPresentationMode = 'test';
+        $this->testObj->setCurrentPresentationMode($currentPresentationMode);
+        $this->assertEquals($currentPresentationMode, $this->testObj->getCurrentPresentationMode());
     }
 
     public function testDisabled(): void
     {
-        $this->testObj->setDisabled(false);
-        $this->assertFalse($this->testObj->isDisabled());
+        $disabled = false;
+        $this->testObj->setDisabled($disabled);
+        $this->assertEquals($disabled, $this->testObj->isDisabled());
 
-        $this->testObj->setDisabled(true);
-        $this->assertTrue($this->testObj->isDisabled());
+        $disabled = true;
+        $this->testObj->setDisabled($disabled);
+        $this->assertEquals($disabled, $this->testObj->isDisabled());
     }
 }

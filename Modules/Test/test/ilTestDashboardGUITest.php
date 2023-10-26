@@ -44,17 +44,17 @@ class ilTestDashboardGUITest extends ilTestBaseTestCase
 
         $this->testObj = new ilTestDashboardGUI(
             $this->createMock(ilObjTest::class),
-            $DIC['ilUser'],
-            $DIC['ilAccess'],
-            $DIC['tpl'],
-            $DIC['ui.factory'],
-            $DIC['ui.renderer'],
-            $DIC['lng'],
-            $DIC['ilDB'],
-            $DIC['ilCtrl'],
-            $DIC['ilTabs'],
-            $DIC['ilToolbar'],
-            $this->createMock(ilTestQuestionSetConfig::class)
+            $DIC->user(),
+            $DIC->access(),
+            $DIC->ui()->mainTemplate(),
+            $DIC->ui()->factory(),
+            $DIC->ui()->renderer(),
+            $DIC->language(),
+            $DIC->database(),
+            $DIC->ctrl(),
+            $DIC->tabs(),
+            $DIC->toolbar(),
+            $this->createMock(ilTestQuestionSetConfig::class),
         );
     }
 

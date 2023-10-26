@@ -46,15 +46,15 @@ class ilTestParticipantsGUITest extends ilTestBaseTestCase
         $this->testObj = new ilTestParticipantsGUI(
             $this->createMock(ilObjTest::class),
             $this->createMock(ilTestQuestionSetConfig::class),
-            $DIC['ilAccess'],
-            $DIC['tpl'],
-            $DIC['ui.factory'],
-            $DIC['ui.renderer'],
-            $DIC['lng'],
-            $DIC['ilCtrl'],
-            $DIC['ilDB'],
-            $DIC['ilTabs'],
-            $DIC['ilToolbar']
+            $DIC->access(),
+            $DIC->ui()->mainTemplate(),
+            $DIC->ui()->factory(),
+            $DIC->ui()->renderer(),
+            $DIC->language(),
+            $DIC->ctrl(),
+            $DIC->database(),
+            $DIC->tabs(),
+            $DIC->toolbar(),
         );
     }
 

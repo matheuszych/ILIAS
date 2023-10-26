@@ -40,37 +40,44 @@ class ilTestPlayerConfirmationModalTest extends ilTestBaseTestCase
 
     public function testModalId(): void
     {
-        $this->testObj->setModalId("12345");
-        $this->assertEquals("12345", $this->testObj->getModalId());
+        $modalId = '12345';
+        $this->testObj->setModalId($modalId);
+        $this->assertEquals($modalId, $this->testObj->getModalId());
     }
 
     public function testHeaderText(): void
     {
-        $this->testObj->setHeaderText("testString");
-        $this->assertEquals("testString", $this->testObj->getHeaderText());
+        $headerText = 'testString';
+        $this->testObj->setHeaderText($headerText);
+        $this->assertEquals($headerText, $this->testObj->getHeaderText());
     }
 
     public function testConfirmationText(): void
     {
-        $this->testObj->setConfirmationText("testString");
-        $this->assertEquals("testString", $this->testObj->getConfirmationText());
+        $confirmationText = 'testString';
+        $this->testObj->setConfirmationText($confirmationText);
+        $this->assertEquals($confirmationText, $this->testObj->getConfirmationText());
     }
 
     public function testConfirmationCheckboxName(): void
     {
-        $this->testObj->setConfirmationCheckboxName("testString");
-        $this->assertEquals("testString", $this->testObj->getConfirmationCheckboxName());
+        $confirmationCheckboxName = 'testString';
+        $this->testObj->setConfirmationCheckboxName($confirmationCheckboxName);
+        $this->assertEquals($confirmationCheckboxName, $this->testObj->getConfirmationCheckboxName());
     }
 
     public function testConfirmationCheckboxLabel(): void
     {
-        $this->testObj->setConfirmationCheckboxLabel("testString");
-        $this->assertEquals("testString", $this->testObj->getConfirmationCheckboxLabel());
+        $confirmationCheckboxLabel = 'testString';
+        $this->testObj->setConfirmationCheckboxLabel($confirmationCheckboxLabel);
+        $this->assertEquals($confirmationCheckboxLabel, $this->testObj->getConfirmationCheckboxLabel());
     }
 
     public function testAddButton(): void
     {
         $this->addGlobal_lng();
+        $this->addGlobal_uiFactory();
+
         $expected = [];
 
         foreach ([51, 291, 15, 681] as $id) {
@@ -79,6 +86,7 @@ class ilTestPlayerConfirmationModalTest extends ilTestBaseTestCase
             $expected[] = $button;
         }
 
+        $this->assertEquals($expected ?? [], $this->testObj->getButtons());
         foreach ($expected as $button) {
             $this->testObj->addButton($button);
         }
@@ -91,26 +99,25 @@ class ilTestPlayerConfirmationModalTest extends ilTestBaseTestCase
         $this->addGlobal_ilCtrl();
 
         $this->addGlobal_lng();
-        $expected = [];
 
         foreach ([51, 291, 15, 681] as $id) {
-            $hiddenInput = new ilHiddenInputGUI("postVar" . "_" . $id);
+            $hiddenInput = new ilHiddenInputGUI('postVar_' . $id);
             $expected[] = $hiddenInput;
         }
 
-        foreach ($expected as $hiddenInput) {
+        foreach ($expected ?? [] as $hiddenInput) {
             $this->testObj->addParameter($hiddenInput);
         }
 
-        $this->assertEquals($expected, $this->testObj->getParameters());
+        $this->assertEquals($expected ?? [], $this->testObj->getParameters());
     }
 
     public function testIsConfirmationCheckboxRequired(): void
     {
         $this->assertFalse($this->testObj->isConfirmationCheckboxRequired());
 
-        $this->testObj->setConfirmationCheckboxName("testName");
-        $this->testObj->setConfirmationCheckboxLabel("testLabel");
+        $this->testObj->setConfirmationCheckboxName('testName');
+        $this->testObj->setConfirmationCheckboxLabel('testLabel');
         $this->assertTrue($this->testObj->isConfirmationCheckboxRequired());
     }
 
@@ -118,8 +125,9 @@ class ilTestPlayerConfirmationModalTest extends ilTestBaseTestCase
     {
         $this->addGlobal_lng();
 
-        $result = $this->testObj->buildModalButtonInstance("201");
+        $buttonId = '201';
+        $result = $this->testObj->buildModalButtonInstance($buttonId);
         $this->assertInstanceOf(ilLinkButton::class, $result);
-        $this->assertEquals("201", $result->getId());
+        $this->assertEquals($buttonId, $result->getId());
     }
 }

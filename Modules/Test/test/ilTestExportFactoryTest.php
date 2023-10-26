@@ -36,7 +36,7 @@ class ilTestExportFactoryTest extends ilTestBaseTestCase
             $this->createMock(ilLanguage::class),
             $this->createMock(ilLogger::class),
             $this->createMock(ilTree::class),
-            $this->createMock(ilComponentRepository::class)
+            $this->createMock(ilComponentRepository::class),
         );
     }
 
