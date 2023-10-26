@@ -33,7 +33,7 @@ class ilTestArchiveServiceTest extends ilTestBaseTestCase
         $this->testObj = new ilTestArchiveService(
             $this->createMock(ilObjTest::class),
             $this->createMock(ilLanguage::class),
-            $this->createMock(ilObjectDataCache::class)
+            $this->createMock(ilObjectDataCache::class),
         );
     }
 

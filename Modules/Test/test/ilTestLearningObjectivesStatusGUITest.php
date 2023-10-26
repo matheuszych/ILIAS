@@ -33,7 +33,7 @@ class ilTestLearningObjectivesStatusGUITest extends ilTestBaseTestCase
         $this->testObj = new ilTestLearningObjectivesStatusGUI(
             $this->createMock(ilLanguage::class),
             $this->createMock(ilCtrl::class),
-            $this->createMock(ILIAS\Test\InternalRequestService::class)
+            $this->createMock(ILIAS\Test\InternalRequestService::class),
         );
     }
 
@@ -44,13 +44,15 @@ class ilTestLearningObjectivesStatusGUITest extends ilTestBaseTestCase
 
     public function testCrsObjId(): void
     {
-        $this->testObj->setCrsObjId(1240);
-        $this->assertEquals(1240, $this->testObj->getCrsObjId());
+        $crsObjId = 1240;
+        $this->testObj->setCrsObjId($crsObjId);
+        $this->assertEquals($crsObjId, $this->testObj->getCrsObjId());
     }
 
     public function testUsrId(): void
     {
-        $this->testObj->setUsrId(1240);
-        $this->assertEquals(1240, $this->testObj->getUsrId());
+        $usrId = 1240;
+        $this->testObj->setUsrId($usrId);
+        $this->assertEquals($usrId, $this->testObj->getUsrId());
     }
 }

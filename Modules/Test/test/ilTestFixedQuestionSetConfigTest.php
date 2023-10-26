@@ -27,10 +27,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 class ilTestFixedQuestionSetConfigTest extends ilTestBaseTestCase
 {
     private ilTestFixedQuestionSetConfig $testObj;
-    /**
-     * @var ilObjTest|mixed|MockObject
-     */
-    private $objTest_mock;
 
     protected function setUp(): void
     {
@@ -41,16 +37,14 @@ class ilTestFixedQuestionSetConfigTest extends ilTestBaseTestCase
         $this->addGlobal_ilLog();
         $this->addGlobal_ilComponentRepository();
 
-        $this->objTest_mock = $this->createMock(ilObjTest::class);
-
         $this->testObj = new ilTestFixedQuestionSetConfig(
-            $DIC['tree'],
-            $DIC['ilDB'],
-            $DIC['lng'],
-            $DIC['ilLog'],
-            $DIC['component.repository'],
-            $this->objTest_mock,
-            $this->createMock(\ILIAS\TestQuestionPool\QuestionInfoService::class)
+            $DIC['tree'], // TODO: replace with proper attribute
+            $DIC->database(),
+            $DIC->language(),
+            $DIC['ilLog'], // TODO: replace with proper attribute
+            $DIC['component.repository'], // TODO: replace with proper attribute
+            $this->createMock(ilObjTest::class),
+            $this->createMock(\ILIAS\TestQuestionPool\QuestionInfoService::class),
         );
     }
 
