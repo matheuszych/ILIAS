@@ -344,4 +344,10 @@ class ilTestBaseTestCase extends TestCase
             );
         return $test_mock;
     }
+
+    public static function callMethod($obj, $name, array $args) {
+        $class = new ReflectionClass($obj);
+        $method = $class->getMethod($name);
+        return $method->invokeArgs($obj, $args);
+    }
 }
