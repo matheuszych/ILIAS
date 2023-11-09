@@ -16,7 +16,6 @@
  *
  *********************************************************************/
 
-use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -24,7 +23,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * @author Marvin Beym <mbeym@databay.de>
  * @author Nils Haagen <nhaagen@concepts-and-training.de>
  */
-class ilObjTestSettingsScoringResultsGUITest extends TestCase
+class ilObjTestSettingsScoringResultsGUITest extends ilTestBaseTestCase
 {
     protected function getUIComponents(): array
     {
@@ -50,7 +49,7 @@ class ilObjTestSettingsScoringResultsGUITest extends TestCase
             $this->createMock(ilObjTest::class)
         );
 
-        list($ui_factory, $ui_renderer, $refinery, $request, $main_template, $tabs_gui) = $this->getUIComponents();
+        [$ui_factory, $ui_renderer, $request, $refinery, $main_template, $tabs_gui] = $this->getUIComponents();
 
         $testObj = new ilObjTestSettingsScoringResultsGUI(
             $this->createMock(ilCtrl::class),
