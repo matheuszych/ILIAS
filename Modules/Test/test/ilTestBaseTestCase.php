@@ -19,6 +19,7 @@
 declare(strict_types=1);
 
 require_once(__DIR__ . '/../../../tests/UI/Base.php');
+require_once(__DIR__ . '/../../../tests/UI/UITestHelper.php');
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -350,8 +351,6 @@ class ilTestBaseTestCase extends TestCase
     }
 
     public static function callMethod($obj, $name, array $args) {
-        $class = new ReflectionClass($obj);
-        $method = $class->getMethod($name);
-        return $method->invokeArgs($obj, $args);
+        return (new ReflectionClass($obj))->getMethod($name)->invokeArgs($obj, $args);
     }
 }
