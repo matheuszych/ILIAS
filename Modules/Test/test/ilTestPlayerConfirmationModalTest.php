@@ -87,7 +87,7 @@ class ilTestPlayerConfirmationModalTest extends ilTestBaseTestCase
             $expected[] = $button;
         }
 
-        $this->assertEquals($expected ?? [], $this->testObj->getButtons());
+        $this->assertEquals([], $this->testObj->getButtons());
         foreach ($expected as $button) {
             $this->testObj->addButton($button);
         }
@@ -120,15 +120,5 @@ class ilTestPlayerConfirmationModalTest extends ilTestBaseTestCase
         $this->testObj->setConfirmationCheckboxName('testName');
         $this->testObj->setConfirmationCheckboxLabel('testLabel');
         $this->assertTrue($this->testObj->isConfirmationCheckboxRequired());
-    }
-
-    public function testBuildModalButtonInstance(): void
-    {
-        $this->addGlobal_lng();
-
-        $buttonId = '201';
-        $result = $this->testObj->buildModalButtonInstance($buttonId);
-        $this->assertInstanceOf(ilLinkButton::class, $result);
-        $this->assertEquals($buttonId, $result->getId());
     }
 }

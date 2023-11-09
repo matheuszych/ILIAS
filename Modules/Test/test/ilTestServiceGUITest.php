@@ -89,19 +89,18 @@ class ilTestServiceGUITest extends ilTestBaseTestCase
     }
 
     /**
-     * @dataProvider buildFixedShufflerSeedReturnsValidSeedDataProvider
+     * @dataProvider buildFixedShufflerSeedDataProvider
      */
-    public function testBuildFixedShufflerSeedReturnsValidSeed(int $question_id, int $pass_id, int $active_id, int $return): void
+    public function testBuildFixedShufflerSeed(int $question_id, int $pass_id, int $active_id, int $return): void
     {
-        $reflection = new ReflectionClass(ilTestServiceGUI::class);
+        $reflection = new ReflectionClass(ilTestShuffler::class);
         $method = $reflection->getMethod('buildFixedShufflerSeed');
-        $method->setAccessible(true);
+        $ilTestShuffler = new ilTestShuffler($this->createMock(ILIAS\Refinery\Factory::class));
 
-        $fixed_seed = $method->invoke($this->testObj, $question_id, $pass_id, $active_id);
-        $this->assertEquals($return, $fixed_seed);
+        $this->assertEquals($return, $method->invoke($ilTestShuffler, $question_id, $pass_id, $active_id));
     }
 
-    public function buildFixedShufflerSeedReturnsValidSeedDataProvider(): array
+    public function buildFixedShufflerSeedDataProvider(): array
     {
         return [
             [

@@ -92,7 +92,7 @@ class ilTestRandomQuestionSetQuestionCollectionTest extends ilTestBaseTestCase
                 $this->testObj->next();
             }
 
-            $this->assertEquals($i, $this->testObj->key());
+            $this->assertEquals(--$i, $this->testObj->key());
         } else {
             $this->assertTrue(false);
         }
@@ -202,7 +202,7 @@ class ilTestRandomQuestionSetQuestionCollectionTest extends ilTestBaseTestCase
             $this->assertEquals(0, $this->testObj->getMissingCount($i));
         }
 
-        for ($i = $questionsCount, $iMax = $questionsCount * 2; $i <= $iMax; $i--) {
+        for ($i = $questionsCount, $iMax = $questionsCount * 2; $i <= $iMax; $i++) {
             $this->assertEquals($i - $questionsCount, $this->testObj->getMissingCount($i));
         }
     }
