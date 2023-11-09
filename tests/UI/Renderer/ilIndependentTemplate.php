@@ -18,12 +18,12 @@
 
 declare(strict_types=1);
 
-require_once("libs/composer/vendor/autoload.php");
+require_once(__DIR__ . '/../../../libs/composer/vendor/autoload.php');
 
 // Do the require-dance for ilTemplate.
-require_once("./Services/UICore/lib/html-it/IT.php");
-require_once("./Services/UICore/lib/html-it/ITX.php");
-require_once("./Services/UICore/classes/class.ilTemplate.php");
+require_once(__DIR__ . '/../../../Services/UICore/lib/html-it/IT.php');
+require_once(__DIR__ . '/../../../Services/UICore/lib/html-it/ITX.php');
+require_once(__DIR__ . '/../../../Services/UICore/classes/class.ilTemplate.php');
 
 class ilIndependentGlobalTemplate extends ilGlobalTemplate implements \ILIAS\UI\Implementation\Render\Template
 {

@@ -18,6 +18,8 @@
 
 declare(strict_types=1);
 
+require_once(__DIR__ . '/../../../tests/UI/Base.php');
+
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use ILIAS\DI\Container;
@@ -35,6 +37,8 @@ use ILIAS\Refinery\Random\Group as RandomGroup;
 class ilTestBaseTestCase extends TestCase
 {
     protected ?Container $dic = null;
+
+    use BaseUITestTrait;
 
     /**
      * @inheritdoc
