@@ -18,8 +18,8 @@
 
 declare(strict_types=1);
 
-require_once(__DIR__ . '/../../../tests/UI/Base.php');
-require_once(__DIR__ . '/../../../tests/UI/UITestHelper.php');
+require_once(__DIR__ . '/../../UI/tests/Base.php');
+require_once(__DIR__ . '/../../UI/tests/UITestHelper.php');
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;

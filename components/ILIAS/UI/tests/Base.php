@@ -16,7 +16,7 @@
  *
  *********************************************************************/
 
-require_once("vendor/composer/vendor/autoload.php");
+require_once(__DIR__ . "/../../../../vendor/composer/vendor/autoload.php");
 
 require_once(__DIR__ . "/Renderer/ilIndependentTemplate.php");
 require_once(__DIR__ . "/../../Language_/classes/class.ilLanguage.php");
