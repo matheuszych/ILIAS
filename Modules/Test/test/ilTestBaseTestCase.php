@@ -350,7 +350,7 @@ class ilTestBaseTestCase extends TestCase
         return $test_mock;
     }
 
-    public static function callMethod($obj, $name, array $args) {
+    public static function callMethod($obj, $name, array $args = []) {
         return (new ReflectionClass($obj))->getMethod($name)->invokeArgs($obj, $args);
     }
 }
