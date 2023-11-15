@@ -21,6 +21,7 @@ declare(strict_types=1);
 class ilSystemStyleHTMLExport
 {
     private array $images = [];
+    protected array $img_sub_dirs;
     protected string $style_dir;
     protected string $style_img_dir;
     protected string $img_dir;
@@ -31,7 +32,13 @@ class ilSystemStyleHTMLExport
         $this->style_dir = $a_exp_dir . '/templates/default';
         $this->style_img_dir = $a_exp_dir . '/templates/default/images';
         $this->img_dir = $a_exp_dir . '/images';
-        $this->img_browser_dir = $a_exp_dir . '/images/browser';
+        $this->img_sub_dirs =
+            [
+                $a_exp_dir . '/images/browser',
+                $a_exp_dir . '/images/media',
+                $a_exp_dir . '/images/nav',
+                $a_exp_dir . '/images/standard'
+            ];
 
         // add standard images
         $this->addImage('media/enlarge.svg');
@@ -50,7 +57,9 @@ class ilSystemStyleHTMLExport
     {
         ilFileUtils::makeDirParents($this->style_dir);
         ilFileUtils::makeDirParents($this->img_dir);
-        ilFileUtils::makeDirParents($this->img_browser_dir);
+        foreach ($this->img_sub_dirs as $sub_browser) {
+            ilFileUtils::makeDirParents($sub_browser);
+        }
     }
 
     /**
