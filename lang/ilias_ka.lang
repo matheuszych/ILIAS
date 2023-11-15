@@ -100,8 +100,6 @@ administration#:#adm_hide_tabs#:#ჩანართების დამალ�
 administration#:#adm_https#:#HTTPS###24 10 2013 new variable
 administration#:#adm_imprint#:#Imprint
 administration#:#adm_imprint_inactive#:#The imprint is inactive and users are not able to access it.
-administration#:#adm_item_cmd_asynch#:#რესურსების ქმედების სიის ასინქრონულად ჩატვირთვა
-administration#:#adm_item_cmd_asynch_info#:#მოქმედების ბრძანება, მაგალითად საწყობში განლაგებულია ასინქრონულად. ეს მთლიანად ზრდის შედეგს, მაგრამ ამცირებს ბრძანებების  ჩატვირთვას.
 administration#:#adm_layout_and_navigation#:#Layout and Navigation###07 02 2020 new variable
 administration#:#adm_locale#:#ლოკალი
 administration#:#adm_locale_info#:#ადგილობრივი პარამეტრების გავლენა, მაგალითად სიებად დახარისხება. მაგალითად :  nl_NL ან de_DE. &quot;Locale&quot;-ები ჩამონათვალი შეიძლება გამოიყოს მძიმით.
@@ -1723,7 +1721,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#Information on the "Pass
 assessment#:#tst_results_overview#:#ტესტის შედეგების ჩაბარების მიმოხილვა
 assessment#:#tst_results_print_best_solution#:#Best Solution in Test Results
 assessment#:#tst_results_print_best_solution_info#:#If activated and accessible by the participant, the best solution appears in the test result summary.
-assessment#:#tst_results_tax_filters#:#Result Filter###26 09 2014 new variable
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#Resume Test with Current Question Selection###24 10 2013 new variable
 assessment#:#tst_resume_test#:#ტესტის განახლება
 assessment#:#tst_revert_changes#:#Undo Editing###fau: testNav
@@ -4010,7 +4007,7 @@ common#:#gender_m#:#მამრობითი
 common#:#gender_n#:#No salutation desired###31 08 2017 new variable
 common#:#general_settings#:#ზოგადი პარამტრები
 common#:#generate#:#წარმოშობა
-common#:#ghostscript_not_configured#:#Ghostscript is not configured. Please open the <a href="setup/setup.php?cmd=mastersettings" target="_blank">Setup</a> to configure it.###24 10 2013 new variable
+common#:#ghostscript_not_configured#:#Ghostscript is not configured. Please open the <a href="cli/setup.php?cmd=mastersettings" target="_blank">Setup</a> to configure it.###24 10 2013 new variable
 common#:#glo#:#ლექსიკონი
 common#:#glo_add#:#ლექსიკონის დამატება
 common#:#glo_added#:#ლექსიკონი დამტებულია
@@ -16257,7 +16254,6 @@ trac#:#user_total#:#ყველა მომხმარებელი (ჯა
 trac#:#view_mode#:#ხედვითი მდგომარეობა
 tstv#:#tstv_create#:#ტესტის სერთიფიკატის შექმნა
 tstv#:#tstv_create_info#:#მონიშნეთ დასრულებული ტესტი სერთიფიკატის შესაქმნელად
-ui#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 ui#:#duration_default_label_end#:#end###29 07 2022 new variable
 ui#:#duration_default_label_start#:#start###29 07 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.###29 07 2022 new variable
@@ -16414,6 +16410,7 @@ user#:#usr_public_profile_logged_in#:#ხილვადია შესულ�
 usr#:#user_action#:#User Action###25 10 2016 new variable
 usr#:#user_actions#:#User Actions###25 10 2016 new variable
 usr#:#user_actions_activation_info#:#Actions will only be listet for users, if the corresponding services are activated and all preconditions are given (e.g. permissions requirements).###25 10 2016 new variable
+validation#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 validation#:#no_array#:#Given value is not an array###29 07 2022 new variable
 validation#:#not_a_null#:#Value of type '%s' is not a null.###10 11 2018 new variable
 validation#:#not_a_string#:#Value of type '%s' is not a string.###10 11 2018 new variable

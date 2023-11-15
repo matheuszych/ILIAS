@@ -1,6 +1,6 @@
 ILIAS Language Handling
 =======================
-ILIAS offers multi-language support for the user interface of ILIAS. Language handling in ILIAS is realised by the [Language](../../Services/Language/README.md) service.
+ILIAS offers multi-language support for the user interface of ILIAS. Language handling in ILIAS is realised by the [Language](../../components/ILIAS/Language_/README.md) service.
 
 # Guidelines
 1.  All language entries are text strings and stored in language files in the 
@@ -37,6 +37,13 @@ avoid multiple entries of the same meaning.
 6. The English language file is the master language file. New variables MUST be added at least to this file, 
 since we synchronise the variables when preparing a new ILIAS release. If a variable exists in a file of another 
 language but not in the English one, the entry will be removed from the file during synchronisation.
+
+7. When, for a new or upcoming version of ILIAS, the underlying functionality of a feature or object changes to 
+such an extent that the text_content of any corresponding language entries needs to be totally rewritten, create 
+instead NEW language entries. This prevents corrections or improvements that arise during ongoing work on the 
+current version of ILIAS (e.g. on the English language files or due to the gender mainstreaming process) from being 
+merged into the next version and thereby incorrectly reverting affected text_content to a previous (albeit slightly 
+improved or gender-conform) state.
 
 # Additional Information
 ## Loading Language Entries

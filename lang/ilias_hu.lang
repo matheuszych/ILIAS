@@ -100,8 +100,6 @@ administration#:#adm_hide_tabs#:#Fülek elrejtése
 administration#:#adm_https#:#HTTPS
 administration#:#adm_imprint#:#Impresszum
 administration#:#adm_imprint_inactive#:#Az impresszum inaktív, a felhasználók nem érhetik el.
-administration#:#adm_item_cmd_asynch#:#Műveletek listaelemeink letöltése aszinkron módon
-administration#:#adm_item_cmd_asynch_info#:#A Műveletek listája (például a Tartalomtárban) aszinkron töltődik. Ez általában növeli a teljesítményt, de kissé lassítja a Műveletek listaelemeinek betöltését.
 administration#:#adm_layout_and_navigation#:#Kinézet és navigáció
 administration#:#adm_locale#:#Helyi
 administration#:#adm_locale_info#:#A helyi beállítások befolyásolják például a listák sorba rendezését. Például hu_HU.UTF-8 vagy de_DE. A többszörös helyi beállítások vesszővel választhatók el. Az első érvényest használjuk.
@@ -1723,7 +1721,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#Sikeres/Sikertelen álla
 assessment#:#tst_results_overview#:#Teszteredmények áttekintése
 assessment#:#tst_results_print_best_solution#:#Legjobb megoldás
 assessment#:#tst_results_print_best_solution_info#:#Kérdésenként a lehetséges legjobb megoldás megjelenik.
-assessment#:#tst_results_tax_filters#:#Eredményszűrő
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#Teszt folytatása a jelenlegi kérdéskiválasztással
 assessment#:#tst_resume_test#:#Teszt folytatása
 assessment#:#tst_revert_changes#:#Módosítás visszavonása
@@ -3693,7 +3690,7 @@ common#:#day#:#Nap
 common#:#days#:#Nap
 common#:#db_host#:#Adatbázis-kiszolgáló
 common#:#db_name#:#Adatbázisnév
-common#:#db_need_hotfix#:#A javítások rendelkezésre állnak. Nyissa meg a <a href="./setup/setup.php">»setup</a> programot!
+common#:#db_need_hotfix#:#A javítások rendelkezésre állnak. Nyissa meg a <a href="./cli/setup.php">»setup</a> programot!
 common#:#db_need_update#:#Az adatbázis frissítésre szorul.
 common#:#db_pass#:#Adatbázis-jelszó
 common#:#db_type#:#Adatbázis-típus
@@ -4010,7 +4007,7 @@ common#:#gender_m#:#Férfi
 common#:#gender_n#:#Nincs megszólítás
 common#:#general_settings#:#Általános beállítások
 common#:#generate#:#Generálás
-common#:#ghostscript_not_configured#:#GhostScript nincs konfigurálva. Nyissa meg a <a href="setup/setup.php?cmd=mastersettings" target="_blank">Setup</a>-ot a konfiguráláshoz.
+common#:#ghostscript_not_configured#:#GhostScript nincs konfigurálva. Nyissa meg a <a href="cli/setup.php?cmd=mastersettings" target="_blank">Setup</a>-ot a konfiguráláshoz.
 common#:#glo#:#Fogalomtár
 common#:#glo_add#:#Fogalomtár létrehozása
 common#:#glo_added#:#Sikeresen létrehozott egy fogalomtárat.
@@ -16259,7 +16256,6 @@ trac#:#user_total#:#Felhasználók összesen
 trac#:#view_mode#:#Nézet
 tstv#:#tstv_create#:#Tesztigazolás létrehozása
 tstv#:#tstv_create_info#:#Válasszon ki egy befejezett tesztet, hogy igazolást generáljon hozzá.
-ui#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 ui#:#duration_default_label_end#:#end###29 07 2022 new variable
 ui#:#duration_default_label_start#:#start###29 07 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.###29 07 2022 new variable
@@ -16416,6 +16412,7 @@ user#:#usr_public_profile_logged_in#:#Bejelentkezett felhasználók számára l�
 usr#:#user_action#:#Felhasználói művelet
 usr#:#user_actions#:#Felhasználói műveletek
 usr#:#user_actions_activation_info#:#A műveleteket csak akkor soroljuk fel a felhasználóknak, ha a kapcsolódó szolgáltatásokat bekapcsolták és az összes előfeltétel adott (például szükséges jogosultságok).
+validation#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 validation#:#no_array#:#Given value is not an array###29 07 2022 new variable
 validation#:#not_a_null#:#'%s' típus értéke nem üres.
 validation#:#not_a_string#:#'%s' típus értéke nem sztring.

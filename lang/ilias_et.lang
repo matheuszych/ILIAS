@@ -100,8 +100,6 @@ administration#:#adm_hide_tabs#:#Peida sakid
 administration#:#adm_https#:#HTTPS
 administration#:#adm_imprint#:#Imprint
 administration#:#adm_imprint_inactive#:#The imprint is inactive and users are not able to access it.
-administration#:#adm_item_cmd_asynch#:#Load Resource Action Lists Asynchronously
-administration#:#adm_item_cmd_asynch_info#:#Action commands, e.g. in the repository, are loaded asynchronously. This increases performance in general, but slows down loading of action command lists a little bit.
 administration#:#adm_layout_and_navigation#:#Layout and Navigation###07 02 2020 new variable
 administration#:#adm_locale#:#Locale
 administration#:#adm_locale_info#:#Locale setting influences e.g. sorting in lists. Examples are nl_NL or de_DE. Multiple locales can be separated by comma. The first valid one will be used.
@@ -1723,7 +1721,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#Information on the "Pass
 assessment#:#tst_results_overview#:#Testitulemuste ülevaade
 assessment#:#tst_results_print_best_solution#:#Best Solution in Test Results
 assessment#:#tst_results_print_best_solution_info#:#If activated and accessible by the participant, the best solution appears in the test result summary.
-assessment#:#tst_results_tax_filters#:#Result Filter
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#Resume Test with Current Question Selection
 assessment#:#tst_resume_test#:#Jätka testi
 assessment#:#tst_revert_changes#:#Undo Editing###fau: testNav
@@ -4010,7 +4007,7 @@ common#:#gender_m#:#Mees
 common#:#gender_n#:#No salutation desired###31 08 2017 new variable
 common#:#general_settings#:#Üldised seaded
 common#:#generate#:#Genereerima
-common#:#ghostscript_not_configured#:#Ghostscript is not configured. Please open the <a href="setup/setup.php?cmd=mastersettings" target="_blank">Setup</a> to configure it.
+common#:#ghostscript_not_configured#:#Ghostscript is not configured. Please open the <a href="cli/setup.php?cmd=mastersettings" target="_blank">Setup</a> to configure it.
 common#:#glo#:#Sõnastik
 common#:#glo_add#:#Lisa sõnastik
 common#:#glo_added#:#Sõnastik on lisatud
@@ -16257,7 +16254,6 @@ trac#:#user_total#:#Kasutajaid kokku
 trac#:#view_mode#:#Vaata olekut
 tstv#:#tstv_create#:#Loo testi tunnistus
 tstv#:#tstv_create_info#:#Vali läbitud test tunnistuse loomiseks
-ui#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 ui#:#duration_default_label_end#:#end###29 07 2022 new variable
 ui#:#duration_default_label_start#:#start###29 07 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.###29 07 2022 new variable
@@ -16414,6 +16410,7 @@ user#:#usr_public_profile_logged_in#:#Sisseloginud kasutajad
 usr#:#user_action#:#User Action###25 10 2016 new variable
 usr#:#user_actions#:#User Actions###25 10 2016 new variable
 usr#:#user_actions_activation_info#:#Actions will only be listet for users, if the corresponding services are activated and all preconditions are given (e.g. permissions requirements).###25 10 2016 new variable
+validation#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 validation#:#no_array#:#Given value is not an array###29 07 2022 new variable
 validation#:#not_a_null#:#Value of type '%s' is not a null.###10 11 2018 new variable
 validation#:#not_a_string#:#Value of type '%s' is not a string.###10 11 2018 new variable

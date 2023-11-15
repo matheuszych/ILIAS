@@ -100,8 +100,6 @@ administration#:#adm_hide_tabs#:#タブを非表示
 administration#:#adm_https#:#HTTPS
 administration#:#adm_imprint#:#Legal Notice
 administration#:#adm_imprint_inactive#:#Legal Noticeは無効なのでユーザはアクセスできません。
-administration#:#adm_item_cmd_asynch#:#リソースアクションリストを非同期でロード
-administration#:#adm_item_cmd_asynch_info#:#リポジトリのアクションコマンドの例にすると非同期的に読み込まれます。一般的にはパフォーマンスは良くなりますが、アクションコマンドリストの読み込みは若干落ちます。
 administration#:#adm_layout_and_navigation#:#レイアウトとナビゲーション
 administration#:#adm_locale#:#ロケール
 administration#:#adm_locale_info#:#リストの並べ替えのようなロケール設定に影響します。nl_NL やde_DEのマルチロケールはカンマで区切ることができます。最初に有効となるものが使用されます。
@@ -1729,7 +1727,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#合格/"不合格"ステ
 assessment#:#tst_results_overview#:#テスト結果全般
 assessment#:#tst_results_print_best_solution#:#模範解答
 assessment#:#tst_results_print_best_solution_info#:#各問題用に加えて考えられるベスト解答が表示されます。
-assessment#:#tst_results_tax_filters#:#結果フィルター
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#現在の問題選択でテストを再開
 assessment#:#tst_resume_test#:#テストを再開
 assessment#:#tst_revert_changes#:#編集をUndo
@@ -4048,7 +4045,7 @@ common#:#gender_m#:#Mr.
 common#:#gender_n#:#挨拶を希望しない
 common#:#general_settings#:#全般設定
 common#:#generate#:#生成
-common#:#ghostscript_not_configured#:#Ghostscriptが構成されていません。構成するには<a href="setup/setup.php?cmd=mastersettings" target="_blank">Setup</a>を開いてください。
+common#:#ghostscript_not_configured#:#Ghostscriptが構成されていません。構成するには<a href="cli/setup.php?cmd=mastersettings" target="_blank">Setup</a>を開いてください。
 common#:#glo#:#用語集
 common#:#glo_add#:#用語集を追加
 common#:#glo_added#:#用語集の追加
@@ -16365,7 +16362,6 @@ trac#:#user_total#:#ユーザ合計
 trac#:#view_mode#:#表示モード
 tstv#:#tstv_create#:#テスト証明の作成
 tstv#:#tstv_create_info#:#完了したテストを選択して証明書を作成します
-ui#:#datetime_required#:#Time/Dateは必須
 ui#:#duration_default_label_end#:#end###19 08 2022 new variable
 ui#:#duration_default_label_start#:#start###19 08 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#開始は終了よりも遅くできません。
@@ -16522,6 +16518,7 @@ user#:#usr_public_profile_logged_in#:#ログイン済みのユーザ
 usr#:#user_action#:#ユーザアクション
 usr#:#user_actions#:#ユーザアクション
 usr#:#user_actions_activation_info#:#応答サービスが有効で全ての前提条件(例 アクセス要件)が与えられている場合はユーザへアクションがリストされるだけです。
+validation#:#datetime_required#:#Time/Dateは必須
 validation#:#no_array#:#Given value is not an array###19 08 2022 new variable
 validation#:#not_a_null#:#タイプ'%s'の値は null ではありあせん。
 validation#:#not_a_string#:#タイプ'%s'の値はストリングではありません。

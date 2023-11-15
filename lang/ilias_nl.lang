@@ -100,8 +100,6 @@ administration#:#adm_hide_tabs#:#Tabs verbergen
 administration#:#adm_https#:#HTTPS
 administration#:#adm_imprint#:#Over Ons
 administration#:#adm_imprint_inactive#:#"Over ons" is niet actief en gebruikers zullen het niet zien.
-administration#:#adm_item_cmd_asynch#:#Asynchroon laden van actie lijsten
-administration#:#adm_item_cmd_asynch_info#:#Inschakelingsopdrachten, b.v. in het Studiecentrum, worden asynchroon geladen. Dat bevordert de prestaties in het algemeen, maar vertraagt de inschakelingsopdrachten enigszins.
 administration#:#adm_layout_and_navigation#:#Layout and Navigation###07 02 2020 new variable
 administration#:#adm_locale#:#Lokaal
 administration#:#adm_locale_info#:#Lokale instellingen beïnvloeden bijvoorbeeld de sortering van lijsten. Voorbeelden zijn nl_NL of de_DE. Meervoudige lokale instellingen kunnen worden ingevoerd gescheiden door een komma. De eerste geldige wordt gebruikt.
@@ -1723,7 +1721,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#Information on the ‘Pa
 assessment#:#tst_results_overview#:#Overzicht van de toets resultaten
 assessment#:#tst_results_print_best_solution#:#Beste oplossing in toets resultaten
 assessment#:#tst_results_print_best_solution_info#:#Als ingeschakeld en toegankelijk voor de deelnemer, zal de beste oplossing verschijnen in de samengevoegde toetsresultaten.
-assessment#:#tst_results_tax_filters#:#Resultaat Filter
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#Resume test with Current Question Selection
 assessment#:#tst_resume_test#:#Hervat toets
 assessment#:#tst_revert_changes#:#Undo Editing###fau: testNav
@@ -4010,7 +4007,7 @@ common#:#gender_m#:#Mannelijk
 common#:#gender_n#:#No salutation desired###31 08 2017 new variable
 common#:#general_settings#:#Algemene instellingen
 common#:#generate#:#Genereer
-common#:#ghostscript_not_configured#:#Ghostscript is not configured. Please open the <a href="setup/setup.php?cmd=mastersettings" target="_blank">Setup</a> om het te configureren.
+common#:#ghostscript_not_configured#:#Ghostscript is not configured. Please open the <a href="cli/setup.php?cmd=mastersettings" target="_blank">Setup</a> om het te configureren.
 common#:#glo#:#Woordenlijst
 common#:#glo_add#:#woordenlijst toevoegen
 common#:#glo_added#:#woordenlijst toegevoegd
@@ -16257,7 +16254,6 @@ trac#:#user_total#:#Gebruiker totaal
 trac#:#view_mode#:#Toon mode
 tstv#:#tstv_create#:#Aanmaken Toets Certificaat
 tstv#:#tstv_create_info#:#Selecteer een voltooide toets om het certificaat te genereren
-ui#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 ui#:#duration_default_label_end#:#end###29 07 2022 new variable
 ui#:#duration_default_label_start#:#start###29 07 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.###29 07 2022 new variable
@@ -16414,6 +16410,7 @@ user#:#usr_public_profile_logged_in#:#Ingelogde gebruikers
 usr#:#user_action#:#User Action###25 10 2016 new variable
 usr#:#user_actions#:#User Actions###25 10 2016 new variable
 usr#:#user_actions_activation_info#:#Actions will only be listet for users, if the corresponding services are activated and all preconditions are given (e.g. permissions requirements).###25 10 2016 new variable
+validation#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 validation#:#no_array#:#Given value is not an array###29 07 2022 new variable
 validation#:#not_a_null#:#Value of type '%s' is not a null.###10 11 2018 new variable
 validation#:#not_a_string#:#Value of type '%s' is not a string.###10 11 2018 new variable

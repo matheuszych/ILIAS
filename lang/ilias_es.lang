@@ -102,8 +102,6 @@ administration#:#adm_hide_tabs#:#Ocultar pestañas
 administration#:#adm_https#:#HTTPS
 administration#:#adm_imprint#:#Información
 administration#:#adm_imprint_inactive#:#La impresión está desactivada y a los usuarios no se les permite acceso.
-administration#:#adm_item_cmd_asynch#:#Cargar lista de acciones asíncronamente
-administration#:#adm_item_cmd_asynch_info#:#Comandos de acción, ej., en el repositorio, se cargan de forma asincrónica. Esto aumenta el rendimiento en general, pero ralentiza un poco la carga de listas de comandos de acción.
 administration#:#adm_layout_and_navigation#:#Layout and Navigation###07 02 2020 new variable
 administration#:#adm_locale#:#Local
 administration#:#adm_locale_info#:#Influencias de configuración regional ej., clasificación en las listas. Ejemplos de ello son nl_NL o de_DE. Múltiples localizaciones pueden ser separadas por comas. La primera válida será la utilizada.
@@ -1725,7 +1723,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#Al resumen del resultado
 assessment#:#tst_results_overview#:#Pass Resumen de resultados del test
 assessment#:#tst_results_print_best_solution#:#Mejor solución en los resultados del test
 assessment#:#tst_results_print_best_solution_info#:#Si está activado y el participante tiene acceso, la mejor solución aparece en el resumen de los resultados del test.
-assessment#:#tst_results_tax_filters#:#Filtro de resultados
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#Continuar test con la selección actual de preguntas
 assessment#:#tst_resume_test#:#Retomar el test
 assessment#:#tst_revert_changes#:#Deshacer edición
@@ -4012,7 +4009,7 @@ common#:#gender_m#:#Hombre
 common#:#gender_n#:#No se desea ningún saludo
 common#:#general_settings#:#Configuración General
 common#:#generate#:#generar
-common#:#ghostscript_not_configured#:#Ghostscript no está configurado. Por favor, abra <a href="setup/setup.php?cmd=mastersettings" target="_blank"> </ a> para configurarlo.
+common#:#ghostscript_not_configured#:#Ghostscript no está configurado. Por favor, abra <a href="cli/setup.php?cmd=mastersettings" target="_blank"> </ a> para configurarlo.
 common#:#glo#:#Glosario
 common#:#glo_add#:#Añadir Glosario
 common#:#glo_added#:#glosario añadido
@@ -16259,7 +16256,6 @@ trac#:#user_total#:#Total del usuario
 trac#:#view_mode#:#Modo de vista
 tstv#:#tstv_create#:#Crear informe de test completado
 tstv#:#tstv_create_info#:#Seleccione un test completado para generar un informe
-ui#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 ui#:#duration_default_label_end#:#end###29 07 2022 new variable
 ui#:#duration_default_label_start#:#start###29 07 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.###29 07 2022 new variable
@@ -16416,6 +16412,7 @@ user#:#usr_public_profile_logged_in#:#Conectado como Usuario.
 usr#:#user_action#:#Acción de usuario
 usr#:#user_actions#:#Acciones de usuario
 usr#:#user_actions_activation_info#:#Las acciones solo se enumerarán para los usuarios si los servicios correspondientes están activados y se cumplen todas las condiciones previas (por ejemplo, requisitos de permisos).
+validation#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 validation#:#no_array#:#Given value is not an array###29 07 2022 new variable
 validation#:#not_a_null#:#Value of type '%s' is not a null.
 validation#:#not_a_string#:#Value of type '%s' is not a string.

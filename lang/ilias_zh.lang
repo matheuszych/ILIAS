@@ -99,8 +99,6 @@ administration#:#adm_hide_tabs#:#隐藏选项卡
 administration#:#adm_https#:#HTTPS###24 10 2013 new variable
 administration#:#adm_imprint#:#版本说明(imprint)
 administration#:#adm_imprint_inactive#:#版本说明(imprint)是不活跃的，用户不能访问它。
-administration#:#adm_item_cmd_asynch#:#异步加载资源动作列表
-administration#:#adm_item_cmd_asynch_info#:#动作命令，例如，在知识库，被异步加载。这在常规情况下提高了性能，但稍微减慢了动作命令列表的下载。
 administration#:#adm_layout_and_navigation#:#Layout and Navigation###07 02 2020 new variable
 administration#:#adm_locale#:#区域设置
 administration#:#adm_locale_info#:#区域设置会影响诸如列表的排序。例如nl_NL或de_DE。多个语言环境可以用逗号分隔。第一个有效的语言环境将会被使用。
@@ -1722,7 +1720,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#Information on the "Pass
 assessment#:#tst_results_overview#:#通过的测试成绩概况
 assessment#:#tst_results_print_best_solution#:#最佳方案在测试结果中
 assessment#:#tst_results_print_best_solution_info#:#如果激活，并通过参与者可访问，则最佳方案出现在测试结果摘要中。
-assessment#:#tst_results_tax_filters#:#Result Filter###26 09 2014 new variable
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#Resume Test with Current Question Selection###24 10 2013 new variable
 assessment#:#tst_resume_test#:#恢复此测试
 assessment#:#tst_revert_changes#:#Undo Editing###fau: testNav
@@ -4009,7 +4006,7 @@ common#:#gender_m#:#男
 common#:#gender_n#:#No salutation desired###31 08 2017 new variable
 common#:#general_settings#:#一般设置
 common#:#generate#:#生成
-common#:#ghostscript_not_configured#:#Ghostscript is not configured. Please open the <a href="setup/setup.php?cmd=mastersettings" target="_blank">Setup</a> to configure it.###24 10 2013 new variable
+common#:#ghostscript_not_configured#:#Ghostscript is not configured. Please open the <a href="cli/setup.php?cmd=mastersettings" target="_blank">Setup</a> to configure it.###24 10 2013 new variable
 common#:#glo#:#词汇表
 common#:#glo_add#:#增加词汇表
 common#:#glo_added#:#词汇表已增加
@@ -16256,7 +16253,6 @@ trac#:#user_total#:#用户总数
 trac#:#view_mode#:#视图模式
 tstv#:#tstv_create#:#创建测试验证
 tstv#:#tstv_create_info#:#选择一个已完成的测试来为它生成一个校验
-ui#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 ui#:#duration_default_label_end#:#end###29 07 2022 new variable
 ui#:#duration_default_label_start#:#start###29 07 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.###29 07 2022 new variable
@@ -16413,6 +16409,7 @@ user#:#usr_public_profile_logged_in#:#已登录用户
 usr#:#user_action#:#User Action###25 10 2016 new variable
 usr#:#user_actions#:#User Actions###25 10 2016 new variable
 usr#:#user_actions_activation_info#:#Actions will only be listet for users, if the corresponding services are activated and all preconditions are given (e.g. permissions requirements).###25 10 2016 new variable
+validation#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 validation#:#no_array#:#Given value is not an array###29 07 2022 new variable
 validation#:#not_a_null#:#Value of type '%s' is not a null.###10 11 2018 new variable
 validation#:#not_a_string#:#Value of type '%s' is not a string.###10 11 2018 new variable

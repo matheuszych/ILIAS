@@ -100,8 +100,6 @@ administration#:#adm_hide_tabs#:#Maskuj taby
 administration#:#adm_https#:#HTTPS
 administration#:#adm_imprint#:#Nota redakcyjna
 administration#:#adm_imprint_inactive#:#Nota redakcyjna nie jest aktywna, w związku z czym nie jest dostępna dla użytkownika.
-administration#:#adm_item_cmd_asynch#:#Niesynchroniczne ładowanie menu w dostępnych zasobach
-administration#:#adm_item_cmd_asynch_info#:#Menu, np. w dostępnych zasobach, ładowane są niesynchronicznie. Takie rozwiązanie zwiększa generalnie moc obliczeniową. W niektórych sytuacjach może dojść do krótkich opóźnień w wyświetlaniu wyskakujących menu.
 administration#:#adm_layout_and_navigation#:#Layout and Navigation###07 02 2020 new variable
 administration#:#adm_locale#:#Locale
 administration#:#adm_locale_info#:#Ustawienia «locale» mają wpływ na sortowanie alfabetyczne w listach. Np. nl_NL lub de_DE. Można podać kilka wartości (przedzielonych przecinkiem). Używana jest pierwsze ważna wartość.
@@ -1723,7 +1721,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#Status „Zaliczone" / "
 assessment#:#tst_results_overview#:#Wykonaj podgląd wyników testu
 assessment#:#tst_results_print_best_solution#:#Najlepsze rozwiązanie
 assessment#:#tst_results_print_best_solution_info#:#Dodatkowo dla każdego pytania wyświetlane jest również najlepsze rozwiązanie.
-assessment#:#tst_results_tax_filters#:#Filtr wyników
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#Kontynuuj test z aktualnie wybranymi pytaniami
 assessment#:#tst_resume_test#:#Wykonywanie testu
 assessment#:#tst_revert_changes#:#Cofnij edycję
@@ -3693,7 +3690,7 @@ common#:#day#:#Dzień
 common#:#days#:#Dni
 common#:#db_host#:#Serwer bazy danych
 common#:#db_name#:#Nazwa bazy danych
-common#:#db_need_hotfix#:#Hotfix jest dostępny. Otwórz <a href="setup/setup.php">»Setup</a>!
+common#:#db_need_hotfix#:#Hotfix jest dostępny. Otwórz <a href="cli/setup.php">»Setup</a>!
 common#:#db_need_update#:#Baza danych wymaga uaktualnienia!
 common#:#db_pass#:#Hasło do bazy danych
 common#:#db_type#:#Typ bazy danych
@@ -4010,7 +4007,7 @@ common#:#gender_m#:#Mężczyzna
 common#:#gender_n#:#Bez tytułu
 common#:#general_settings#:#Ustawienia ogólne
 common#:#generate#:#Generuj
-common#:#ghostscript_not_configured#:#Ghostscript nie jest skonfigurowany. Otwórz <a href="setup/setup.php?cmd=mastersettings" target=”_blank”>Setup</a>, aby skonfigurować Ghostscript.
+common#:#ghostscript_not_configured#:#Ghostscript nie jest skonfigurowany. Otwórz <a href="cli/setup.php?cmd=mastersettings" target=”_blank”>Setup</a>, aby skonfigurować Ghostscript.
 common#:#glo#:#Słownik
 common#:#glo_add#:#Dodaj słownik
 common#:#glo_added#:#Słownik został dodany
@@ -16257,7 +16254,6 @@ trac#:#user_total#:#Liczba użytkowników
 trac#:#view_mode#:#Tryb widoku
 tstv#:#tstv_create#:#Utwórz certyfikat testu
 tstv#:#tstv_create_info#:#Wybierz test, dla którego potrzebujesz certyfikatu
-ui#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 ui#:#duration_default_label_end#:#end###29 07 2022 new variable
 ui#:#duration_default_label_start#:#start###29 07 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.###29 07 2022 new variable
@@ -16414,6 +16410,7 @@ user#:#usr_public_profile_logged_in#:#Zalogowani użytkownicy
 usr#:#user_action#:#Akcja użytkownika
 usr#:#user_actions#:#Akcje użytkowników
 usr#:#user_actions_activation_info#:#Te akcje oferowane są tylko wtedy, gdy aktywne są odpowiednie usługi i spełnione są odpowiednie warunki (np. uprawnienia).
+validation#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 validation#:#no_array#:#Given value is not an array###29 07 2022 new variable
 validation#:#not_a_null#:#Value of type '%s' is not a null.
 validation#:#not_a_string#:#Value of type '%s' is not a string.

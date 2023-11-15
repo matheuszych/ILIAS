@@ -100,8 +100,6 @@ administration#:#adm_hide_tabs#:#Skrýt tabulky
 administration#:#adm_https#:#HTTPS
 administration#:#adm_imprint#:#Impresum
 administration#:#adm_imprint_inactive#:#Impresum není aktivní a uživatelé nemají k němu přístup.
-administration#:#adm_item_cmd_asynch#:#Vložit seznam zdrojových akcí asynchronně
-administration#:#adm_item_cmd_asynch_info#:#Povely akcí, např. v úložišti, jsou ukládány asynchronně. To zvyšuje obecně výkon, ale poněkud zpomaluje stahování seznamů povelů akcí.
 administration#:#adm_layout_and_navigation#:#Layout and Navigation###07 02 2020 new variable
 administration#:#adm_locale#:#Lokální
 administration#:#adm_locale_info#:#Lokální nastavení ovlivňuje např. třídění seznamů. Příklady jsou nl_NL nebo de_DE. Vícenásobné lokality mohou být odděleny čárkou. Bude použita první platná.
@@ -1723,7 +1721,6 @@ assessment#:#tst_results_grading_opt_show_status_desc#:#Informace o stavu „Usp
 assessment#:#tst_results_overview#:#Přehled průchodů výsledky testu
 assessment#:#tst_results_print_best_solution#:#Nejlepší řešení z výsledků testu
 assessment#:#tst_results_print_best_solution_info#:#Je-li aktivováno a dostupné uživatelům, nejlepší řešení se objeví v souhrnných výsledcích testu.
-assessment#:#tst_results_tax_filters#:#Filtr výsledků
 assessment#:#tst_resume_dyn_test_with_cur_quest_sel#:#Pokračování testu s aktuálním výběrem otázek
 assessment#:#tst_resume_test#:#Pokračování testu
 assessment#:#tst_revert_changes#:#Vrátit úpravy
@@ -4010,7 +4007,7 @@ common#:#gender_m#:#muž
 common#:#gender_n#:#Není požadován pozdrav
 common#:#general_settings#:#Obecná nastavení
 common#:#generate#:#Generovat
-common#:#ghostscript_not_configured#:#Ghostscript je nyní konfigurován. Otevřete prosím <a href="setup/setup.php?cmd=mastersettings" target="_blank">Nastavení</a> k její konfiguraci.
+common#:#ghostscript_not_configured#:#Ghostscript je nyní konfigurován. Otevřete prosím <a href="cli/setup.php?cmd=mastersettings" target="_blank">Nastavení</a> k její konfiguraci.
 common#:#glo#:#Glosář
 common#:#glo_add#:#Přidat glosář
 common#:#glo_added#:#Glosář přidán
@@ -16257,7 +16254,6 @@ trac#:#user_total#:#Celkem uživatelů
 trac#:#view_mode#:#Mód zobrazení
 tstv#:#tstv_create#:#Vytvořit verifikaci testu
 tstv#:#tstv_create_info#:#Vyberte úplný test pro generování jeho certifikátu
-ui#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 ui#:#duration_default_label_end#:#end###29 07 2022 new variable
 ui#:#duration_default_label_start#:#start###29 07 2022 new variable
 ui#:#duration_end_must_not_be_earlier_than_start#:#Start must not be later than end.###29 07 2022 new variable
@@ -16414,6 +16410,7 @@ user#:#usr_public_profile_logged_in#:#Viditelné pro přihlášené uživatele.
 usr#:#user_action#:#Akce uživatele
 usr#:#user_actions#:#Akce uživatele
 usr#:#user_actions_activation_info#:#Akce budou pouze vedeny v seznamech pouze pro uživatele, pokud budou aktivovány odpovídající služby a pokud jsou dány všechny předpoklady (např. požadavky na oprávnění).
+validation#:#datetime_required#:#Time/Date required###29 07 2022 new variable
 validation#:#no_array#:#Given value is not an array###29 07 2022 new variable
 validation#:#not_a_null#:#Hodnota typu '%s' není nula.
 validation#:#not_a_string#:#Hodnota typu '%s' není řada.
