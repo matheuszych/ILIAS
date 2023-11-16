@@ -2467,6 +2467,7 @@ blog#:#blog_settings#:#Blog Administration
 blog#:#blog_settings_navigation#:#Navigation Column
 blog#:#blog_show_latest#:#Show latest postings/drafts
 blog#:#blog_show_print_view#:#Show Print View
+blog#:#blog_starting_page#:#Starting Page
 blog#:#blog_style#:#Blog Style
 blog#:#blog_task_publishing_draft_title#:#Publishing of Draft "%s"
 blog#:#blog_toggle_draft#:#Withdraw Publication
@@ -9239,6 +9240,7 @@ exc#:#exc_individual_deadline#:#Individual Deadline
 exc#:#exc_individual_deadline_action#:#Set Individual Deadline
 exc#:#exc_individual_deadline_before_global#:#The date has to be after the (last) deadline: %s.
 exc#:#exc_instruction_files#:#Instruction Files
+exc#:#exc_instruction_migration_not_run#:#The instruction file migration has not been finished yet. Please contact your system administrator.
 exc#:#exc_late_submission#:#Late Submission
 exc#:#exc_late_submission_warning#:#Submissions after %s are marked as late.
 exc#:#exc_lead_request_idl#:#Request Deadline
@@ -10729,7 +10731,9 @@ lm#:#lm_edit_chapters#:#Edit Chapters
 lm#:#lm_edit_lm_settings#:#Edit Learning Module Settings
 lm#:#lm_est_reading_time#:#Estimated Reading Time
 lm#:#lm_est_reading_time_info#:#In Learning Modules in the repository the estimated reading time can be determined and displayed.
+lm#:#lm_page_added#:#Page has been added.
 lm#:#lm_page_type_lm#:#LM Page
+lm#:#lm_pages_added#:#Pages have been added.
 lm#:#lm_save_titles#:#Titles saved.
 lng#:#language_detection#:#Language Detection
 lng#:#lng_disable_language_detection#:#Disable Language Detection
@@ -15343,7 +15347,6 @@ skmg#:#skmg_new_sktr#:#New Competence Template Reference
 skmg#:#skmg_next_step#:#Next Step
 skmg#:#skmg_no_nodes_selectable#:#Currently there are no competences selectable.
 skmg#:#skmg_no_skill_entries#:#You do not have any entries for this competence yet.
-skmg#:#skmg_no_skills#:#No Competences
 skmg#:#skmg_no_skills_selected_info#:#You have not selected or fulfilled any competences yet. Click on the "Add Competence"-button to select a competence. You can add any number of competences. If you fulfill competences by editing learning materials, they will be automatically listed here.
 skmg#:#skmg_no_trigger#:#No Trigger
 skmg#:#skmg_nr#:#Nr
@@ -16516,6 +16519,7 @@ survey#:#svy_mail_send_confirmation#:#Send Participation Confirmation
 survey#:#svy_matrix_layout_percentages_sum_invalid#:#The column settings do not sum up to 100%.
 survey#:#svy_max_sum_score#:#Maximum Sum Score
 survey#:#svy_neutral_answer#:#Text for a Neutral Answer (‘Not Specified’, ‘I don't know’ etc.)
+survey#:#svy_no_appraisees_found#:#No appraisees with feedbacks found.
 survey#:#svy_notification_tutor_results#:#One E-Mail including Survey Results
 survey#:#svy_notification_tutor_results_alert#:#This requires an end date.
 survey#:#svy_notification_tutor_results_info#:#After reaching the end data a cron job will send an email with the detailed survey results attached to it.

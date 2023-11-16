@@ -22,7 +22,7 @@ use ILIAS\GlobalScreen\ScreenContext\ContextServices;
  * Portfolio view gui class
  * @author Jörg Lützenkirchen <luetzenkirchen@leifos.com>
  * @ilCtrl_Calls ilObjPortfolioGUI: ilPortfolioPageGUI, ilPageObjectGUI
- * @ilCtrl_Calls ilObjPortfolioGUI: ilWorkspaceAccessGUI, ilNoteGUI, ilCommonActionDispatcherGUI
+ * @ilCtrl_Calls ilObjPortfolioGUI: ilWorkspaceAccessGUI, ilCommentGUI, ilCommonActionDispatcherGUI
  * @ilCtrl_Calls ilObjPortfolioGUI: ilObjectContentStyleSettingsGUI, ilPortfolioExerciseGUI
  */
 class ilObjPortfolioGUI extends ilObjPortfolioBaseGUI
@@ -78,7 +78,6 @@ class ilObjPortfolioGUI extends ilObjPortfolioBaseGUI
     public function executeCommand(): void
     {
         $this->checkPermission("read");
-
         $this->setTitleAndDescription();
 
         $next_class = $this->ctrl->getNextClass($this);
@@ -86,6 +85,7 @@ class ilObjPortfolioGUI extends ilObjPortfolioBaseGUI
 
         // we have to init the note js handling here, might go to
         // a better place in the future
+        /*
         $this->notes_gui->initJavascript(
             $this->ctrl->getLinkTargetByClass(
                 array("ilnotegui"),
@@ -94,11 +94,10 @@ class ilObjPortfolioGUI extends ilObjPortfolioBaseGUI
                 true,
                 false
             )
-        );
+        );*/
 
         // trigger assignment tool
         $this->triggerAssignmentTool();
-
         switch ($next_class) {
             case "ilworkspaceaccessgui":
                 if ($this->checkPermissionBool("write")) {
@@ -121,7 +120,7 @@ class ilObjPortfolioGUI extends ilObjPortfolioBaseGUI
                 $this->handlePageCall($cmd);
                 break;
 
-            case "ilnotegui":
+            case "ilcommentgui":
                 $this->preview();
                 break;
 
@@ -560,6 +559,7 @@ class ilObjPortfolioGUI extends ilObjPortfolioBaseGUI
             0,
             $this->object->hasPublicComments()
         );
+        $page_gui->setStyleId($this->content_style_domain->getEffectiveStyleId());
         $page_gui->setAdditional($this->getAdditional());
         return $page_gui;
     }

@@ -2467,6 +2467,7 @@ blog#:#blog_settings#:#Blog-Administration
 blog#:#blog_settings_navigation#:#Navigation
 blog#:#blog_show_latest#:#Neueste Beiträge/Entwürfe anzeigen
 blog#:#blog_show_print_view#:#Druckansicht
+blog#:#blog_starting_page#:#Startseite
 blog#:#blog_style#:#Blog-Style
 blog#:#blog_task_publishing_draft_title#:#Veröffentlichen des Entwurfs "%s"
 blog#:#blog_toggle_draft#:#Veröffentlichung zurücknehmen
@@ -9250,6 +9251,7 @@ exc#:#exc_individual_deadline#:#Individueller Abgabetermin
 exc#:#exc_individual_deadline_action#:#Individuellen Abgabetermin setzen
 exc#:#exc_individual_deadline_before_global#:#Das Datum muss hinter der (letzten) Deadline liegen: %s.
 exc#:#exc_instruction_files#:#Dateien zur Arbeitsanweisung
+exc#:#exc_instruction_migration_not_run#:#Die Migration der Dateien zur Arbeitsanweisung ist noch nicht abgeschlossen. Kontaktieren Sie ihren Systemadministrator.
 exc#:#exc_late_submission#:#Verspätete Abgabe
 exc#:#exc_late_submission_warning#:#Abgaben nach %s werden als verspätet gekennzeichnet.
 exc#:#exc_lead_request_idl#:#Abgabefrist anfragen
@@ -10740,7 +10742,9 @@ lm#:#lm_edit_chapters#:#Kapitel bearbeiten
 lm#:#lm_edit_lm_settings#:#Lernmoduleinstellungen bearbeiten
 lm#:#lm_est_reading_time#:#Geschätzte Lesedauer
 lm#:#lm_est_reading_time_info#:#In Lernmodulen kann eine geschätzte Lesezeit ermittelt und angezeigt werden.
+lm#:#lm_page_added#:#Eine Seite wurde hinzugefügt.
 lm#:#lm_page_type_lm#:#Lernmodulseite
+lm#:#lm_pages_added#:#Die Seiten wurden hinzugefügt.
 lm#:#lm_save_titles#:#Titel wurden gespeichert.
 lng#:#language_detection#:#Automatische Spracherkennung
 lng#:#lng_disable_language_detection#:#Automatische Spracherkennung deaktivieren
@@ -15350,7 +15354,6 @@ skmg#:#skmg_new_sktr#:#Neue Vorlagenreferenz
 skmg#:#skmg_next_step#:#Nächster Schritt
 skmg#:#skmg_no_nodes_selectable#:#Zur Zeit sind keine Kompetenzen auswählbar.
 skmg#:#skmg_no_skill_entries#:#Sie besitzen für diese Kompetenz bisher keine Einträge.
-skmg#:#skmg_no_skills#:#Keine Kompetenz
 skmg#:#skmg_no_skills_selected_info#:#Sie haben noch keine Kompetenzen ausgewählt oder erworben. Klicken Sie auf den Button "Kompetenz hinzufügen" um eine Kompetenz auszuwählen. Sie können beliebig viele Kompetenzen hinzufügen. Wenn Sie Kompetenzen durch das Bearbeiten von Lerninhalten erwerben, werden diese automatisch hier aufgelistet.
 skmg#:#skmg_no_trigger#:#Kein Auslöser
 skmg#:#skmg_nr#:#Nr
@@ -16523,6 +16526,7 @@ survey#:#svy_mail_send_confirmation#:#Teilnahmebestätigung senden
 survey#:#svy_matrix_layout_percentages_sum_invalid#:#Die Spalten-Einstellungen summieren sich nicht auf 100%.
 survey#:#svy_max_sum_score#:#Maximale Skalenpunktesumme
 survey#:#svy_neutral_answer#:#Text für eine neutrale Antwort ("Nicht definiert", "Ich weiß nicht", "Keine Angabe" etc.)
+survey#:#svy_no_appraisees_found#:#Es liegen keine Feedback-Nehmer mit abgegebenen Feedbacks vor.
 survey#:#svy_notification_tutor_results#:#Eine E-Mail mit den Umfrageergebnissen
 survey#:#svy_notification_tutor_results_alert#:#Diese Funktion erfordert ein Enddatum.
 survey#:#svy_notification_tutor_results_info#:#Nach dem Ablauf des Enddatum wird eine E-Mail mit den detailierten Umfrageergebnissen versendet.

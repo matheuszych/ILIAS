@@ -416,6 +416,9 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
 
         $this->setContentSubTabs();
         if ($this->isActiveAdministrationPanel()) {
+            if (!$this->item_presentation->canManageItems()) {
+                $this->ctrl->redirect($this, "disableAdministrationPanel");
+            }
             $ilTabs->activateSubTab("manage");
         } else {
             $ilTabs->activateSubTab("view_content");
@@ -500,6 +503,7 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
             $main_tpl->setPageFormAction($this->ctrl->getFormAction($this));
 
             $toolbar = new ilToolbarGUI();
+            $toolbar->setId("admclip");
             $this->ctrl->setParameter($this, "type", "");
             $this->ctrl->setParameter($this, "item_ref_id", "");
 
@@ -518,6 +522,7 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
             // #11545
             $main_tpl->setPageFormAction($this->ctrl->getFormAction($this));
             $toolbar = new ilToolbarGUI();
+            $toolbar->setId("adm");
             $this->ctrl->setParameter($this, "type", "");
             $this->ctrl->setParameter($this, "item_ref_id", "");
 
@@ -2066,19 +2071,9 @@ class ilContainerGUI extends ilObjectGUI implements ilDesktopItemHandling
     {
         $ctrl = $this->ctrl;
         $tabs = $this->tabs;
+        $tabs->clearTargets();
         $page_gui = new ilContainerPageGUI($this->object->getId());
-        $style_id = $this->content_style_domain
-            ->styleForRefId($this->object->getRefId())
-            ->getEffectiveStyleId();
-        if (ilObject::_lookupType($style_id) === "sty") {
-            $page_gui->setStyleId($style_id);
-        } else {
-            $style_id = 0;
-        }
-        $page_gui->setTabHook($this, "addPageTabs");
-        $ctrl->getHTML($page_gui);
-        $tabs->setTabActive("obj_sty");
-        $tabs->setBackTarget($this->lng->txt('back'), ilLink::_getLink($this->ref_id));
+        $tabs->setBackTarget($this->lng->txt('back'), $this->ctrl->getLinkTarget($page_gui, "edit"));
     }
 
     protected function showPasswordInstructionObject(

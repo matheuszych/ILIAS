@@ -571,13 +571,27 @@ class ilObjWikiGUI extends ilObjectGUI
             'ilobjecttranslationgui'
             ), true) || $ilCtrl->getNextClass() === "ilpermissiongui") {
             if ($this->requested_page !== "") {
-                $this->tabs_gui->setBackTarget(
-                    $lng->txt("wiki_last_visited_page"),
-                    $this->pm->getPermaLink(
-                        $this->edit_request->getWikiPageId(),
+                $page_id = ($this->edit_request->getWikiPageId() > 0)
+                    ? $this->edit_request->getWikiPageId()
+                    : $this->pm->getPageIdForTitle(
+                        $this->requested_page,
                         $this->edit_request->getTranslation()
-                    )
-                );
+                    );
+                if (is_null($page_id) && $this->edit_request->getFromPage() !== "") {
+                    $page_id = $this->pm->getPageIdForTitle(
+                        $this->edit_request->getFromPage(),
+                        $this->edit_request->getTranslation()
+                    );
+                }
+                if (!is_null($page_id)) {
+                    $this->tabs_gui->setBackTarget(
+                        $lng->txt("wiki_last_visited_page"),
+                        $this->pm->getPermaLink(
+                            $page_id,
+                            $this->edit_request->getTranslation()
+                        )
+                    );
+                }
             }
 
             // pages
