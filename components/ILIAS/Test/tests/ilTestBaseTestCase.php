@@ -294,6 +294,12 @@ class ilTestBaseTestCase extends TestCase
         $this->setGlobalVariable('ilIliasIniFile', $this->createMock(ilIniFile::class));
     }
 
+    protected function addGlobal_ilClientIniFile(): void
+    {
+        $this->setGlobalVariable('ilClientIniFile', $this->createMock(ilIniFile::class));
+//        $this->getMockBuilder(ilIniFile::class)->disableOriginalConstructor()->getMock();
+    }
+
     protected function addGlobal_ilLoggerFactory(): void
     {
         $this->setGlobalVariable('ilLoggerFactory', $this->createMock(ilLoggerFactory::class));
