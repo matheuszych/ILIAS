@@ -2,16 +2,26 @@
 
 class ilECSTestSettingsTest extends ilTestBaseTestCase
 {
+    private ilECSTestSettings $testObj;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addGlobal_ilLoggerFactory();
+        $this->addGlobal_ilRbacAdmin();
+
+        $this->testObj = new ilECSTestSettings($this->createMock(ilObject::class));
+    }
+
     public function testConstruct(): void
     {
-        $ilECSObjectSettings = new ilECSTestSettings($this->createMock(ilObject::class));
-        $this->assertInstanceOf(ilECSTestSettings::class, $ilECSObjectSettings);
+        $this->assertInstanceOf(ilECSTestSettings::class, $this->testObj);
     }
 
     public function testGetECSObjectType(): void
     {
-        $ilECSObjectSettings = new ilECSTestSettings($this->createMock(ilObject::class));
-        $this->assertEquals('/campusconnect/tests', self::callMethod($ilECSObjectSettings, 'setECSObjectType'));
+        $this->assertEquals('/campusconnect/tests', self::callMethod($this->testObj, 'getECSObjectType'));
     }
 
     public function testBuildJson(): void

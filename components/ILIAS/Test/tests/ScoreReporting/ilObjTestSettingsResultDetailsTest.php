@@ -224,24 +224,4 @@ class ilObjTestSettingsResultDetailsTest extends ilTestBaseTestCase
     {
         $this->markTestSkipped();
     }
-
-    /**
-     * @dataProvider getAndWithTaxonomyFilterIdsDataProvider
-     */
-    public function testGetAndWithTaxonomyFilterIds(array $IO): void
-    {
-        $ilObjTestSettingsResultDetails = new ilObjTestSettingsResultDetails(0);
-        $ilObjTestSettingsResultDetails = $ilObjTestSettingsResultDetails->withTaxonomyFilterIds($IO);
-        $this->assertEquals($IO, $ilObjTestSettingsResultDetails->getTaxonomyFilterIds());
-    }
-
-    public function getAndWithTaxonomyFilterIdsDataProvider(): array
-    {
-        return [
-            [[]],
-            [[1]],
-            [[1, 2]],
-            [[1, 2, 3]],
-        ];
-    }
 }

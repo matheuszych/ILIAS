@@ -2,15 +2,27 @@
 
 class ilTestQuestionPoolSelectorExplorerTest extends ilTestBaseTestCase
 {
-    public function testConstruct(): void
+    private ilTestQuestionPoolSelectorExplorer $testObj;
+
+    protected function setUp(): void
     {
-        $ilTestQuestionPoolSelectorExplorer = new ilTestQuestionPoolSelectorExplorer(
+        parent::setUp();
+
+        $this->addGlobal_ilSetting();
+        $this->addGlobal_ilAccess();
+        $this->addGlobal_ilCtrl();
+
+        $this->testObj = new ilTestQuestionPoolSelectorExplorer(
             $this->createMock(ilTestRandomQuestionSetConfigGUI::class),
             '',
             '',
             $this->createMock(ilObjectDataCache::class)
         );
-        $this->assertInstanceOf(ilRepositorySelectorExplorerGUI::class, $ilTestQuestionPoolSelectorExplorer);
+    }
+
+    public function testConstruct(): void
+    {
+        $this->assertInstanceOf(ilRepositorySelectorExplorerGUI::class, $this->testObj);
     }
 
     /**
@@ -18,16 +30,9 @@ class ilTestQuestionPoolSelectorExplorerTest extends ilTestBaseTestCase
      */
     public function testGetAndSetAvailableQuestionPools(array $IO): void
     {
-        $ilTestQuestionPoolSelectorExplorer = new ilTestQuestionPoolSelectorExplorer(
-            $this->createMock(ilTestRandomQuestionSetConfigGUI::class),
-            '',
-            '',
-            $this->createMock(ilObjectDataCache::class)
-        );
-
-        $this->assertEquals([], $ilTestQuestionPoolSelectorExplorer->getAvailableQuestionPools());
-        $this->assertNull($ilTestQuestionPoolSelectorExplorer->setAvailableQuestionPools($IO));
-        $this->assertEquals($IO, $ilTestQuestionPoolSelectorExplorer->getAvailableQuestionPools());
+        $this->assertEquals([], $this->testObj->getAvailableQuestionPools());
+        $this->assertNull($this->testObj->setAvailableQuestionPools($IO));
+        $this->assertEquals($IO, $this->testObj->getAvailableQuestionPools());
     }
 
     public function getAndSetAvailableQuestionPoolsDataProvider(): array

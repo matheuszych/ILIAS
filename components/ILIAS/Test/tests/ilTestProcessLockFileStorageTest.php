@@ -2,22 +2,29 @@
 
 class ilTestProcessLockFileStorageTest extends ilTestBaseTestCase
 {
+    private ilTestProcessLockFileStorage $testObj;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addGlobal_filesystem();
+
+        $this->testObj = new ilTestProcessLockFileStorage(0);
+    }
     public function testConstruct(): void
     {
-        $ilTestProcessLockFileStorage = new ilTestProcessLockFileStorage(0);
-        $this->assertInstanceOf(ilTestProcessLockFileStorage::class, $ilTestProcessLockFileStorage);
+        $this->assertInstanceOf(ilTestProcessLockFileStorage::class, $this->testObj);
     }
 
     public function testGetPathPrefix(): void
     {
-        $ilTestProcessLockFileStorage = new ilTestProcessLockFileStorage(0);
-        $this->assertEquals('ilTestProcessLocks', self::callMethod($ilTestProcessLockFileStorage, 'getPathPrefix'));
+        $this->assertEquals('ilTestProcessLocks', self::callMethod($this->testObj, 'getPathPrefix'));
     }
 
     public function testGetPathPostfix(): void
     {
-        $ilTestProcessLockFileStorage = new ilTestProcessLockFileStorage(0);
-        $this->assertEquals('context', self::callMethod($ilTestProcessLockFileStorage, 'getPathPostfix'));
+        $this->assertEquals('context', self::callMethod($this->testObj, 'getPathPostfix'));
     }
 
     public function testCreate(): void

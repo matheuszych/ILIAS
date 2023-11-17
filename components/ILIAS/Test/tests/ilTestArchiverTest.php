@@ -2,10 +2,23 @@
 
 class ilTestArchiverTest extends ilTestBaseTestCase
 {
+    private ilTestArchiver $testObj;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addGlobal_ilCtrl();
+        $this->addGlobal_ilUser();
+        $this->addGlobal_ilTabs();
+        $this->addGlobal_ilToolbar();
+        $this->addGlobal_ilAccess();
+
+        $this->testObj = new ilTestArchiver(0, 0);
+    }
     public function testConstruct(): void
     {
-        $ilTestArchiver = new ilTestArchiver(0, 0);
-        $this->assertInstanceOf(ilTestArchiver::class, $ilTestArchiver);
+        $this->assertInstanceOf(ilTestArchiver::class, $this->testObj);
     }
 
     public function testGetAndSetParticipantData(): void

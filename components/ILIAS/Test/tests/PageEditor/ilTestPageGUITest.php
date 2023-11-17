@@ -7,10 +7,25 @@ use ilTestPageGUI;
 
 class ilTestPageGUITest extends ilTestBaseTestCase
 {
+    private ilTestPageGUI $testObj;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addGlobal_ilCtrl();
+        $this->addGlobal_ilTabs();
+        $this->addGlobal_ilAccess();
+        $this->addGlobal_ilUser();
+        $this->addGlobal_ilHelp();
+        $this->addGlobal_ilToolbar();
+
+        $this->testObj = new ilTestPageGUI('', 0);
+    }
+
     public function testConstruct(): void
     {
-        $ilTestPageGUI = new ilTestPageGUI('', 0);
-        $this->assertInstanceOf(ilTestPageGUI::class, $ilTestPageGUI);
+        $this->assertInstanceOf(ilTestPageGUI::class, $this->testObj);
     }
 
     /**
@@ -18,8 +33,7 @@ class ilTestPageGUITest extends ilTestBaseTestCase
      */
     public function testGetTabs(string $input): void
     {
-        $ilTestPageGUI = new ilTestPageGUI('', 0);
-        $this->assertNull($ilTestPageGUI->getTabs($input));
+        $this->assertNull($this->testObj->getTabs($input));
     }
 
     public function getTabsDataProvider(): array

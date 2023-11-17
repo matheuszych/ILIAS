@@ -2,15 +2,35 @@
 
 class ilObjAssessmentFolderGUITest extends ilTestBaseTestCase
 {
-    public function testConstruct(): void
+    private ilObjAssessmentFolderGUI $testObj;
+
+    protected function setUp(): void
     {
-        $ilObjAssessmentFolderGUI = new ilObjAssessmentFolderGUI(
+        parent::setUp();
+
+        $this->addGlobal_rbacsystem();
+        $this->addGlobal_ilRbacAdmin();
+        $this->addGlobal_rbacreview();
+        $this->addGlobal_ilLocator();
+        $this->addGlobal_ilUser();
+        $this->addGlobal_ilAccess();
+        $this->addGlobal_ilSetting();
+        $this->addGlobal_ilToolbar();
+        $this->addGlobal_ilCtrl();
+        $this->addGlobal_ilTabs();
+        $this->addGlobal_objectService();
+
+        $this->testObj = new ilObjAssessmentFolderGUI(
             null,
             0,
             true,
             true,
         );
-        $this->assertInstanceOf(ilObjAssessmentFolderGUI::class, $ilObjAssessmentFolderGUI);
+    }
+
+    public function testConstruct(): void
+    {
+        $this->assertInstanceOf(ilObjAssessmentFolderGUI::class, $this->testObj);
     }
 
     public function testGetAssessmentFolder(): void

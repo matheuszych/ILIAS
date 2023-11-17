@@ -2,24 +2,29 @@
 
 class ilObjTestVerificationGUITest extends ilTestBaseTestCase
 {
-    public function testConstruct(): void
+    private ilObjTestVerificationGUI $testObj;
+
+    protected function setUp(): void
     {
-        $ilObjTestVerificationGUI = new ilObjTestVerificationGUI(
+        parent::setUp();
+
+        $this->addGlobal_ilLoggerFactory();
+
+        $this->testObj = new ilObjTestVerificationGUI(
             0,
             1,
             0,
         );
-        $this->assertInstanceOf(ilObjTestVerificationGUI::class, $ilObjTestVerificationGUI);
+    }
+
+    public function testConstruct(): void
+    {
+        $this->assertInstanceOf(ilObjTestVerificationGUI::class, $this->testObj);
     }
 
     public function testGetType(): void
     {
-        $ilObjTestVerificationGUI = new ilObjTestVerificationGUI(
-            0,
-            1,
-            0,
-        );
-        $this->assertEquals('tstv', $ilObjTestVerificationGUI->getType());
+        $this->assertEquals('tstv', $this->testObj->getType());
     }
 
     public function testCreate(): void

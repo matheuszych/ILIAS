@@ -2,10 +2,21 @@
 
 class ilTestManScoringParticipantNotificationTest extends ilTestBaseTestCase
 {
+    private ilTestMailNotification $testObj;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addGlobal_ilClientIniFile();
+        $this->addGlobal_ilLoggerFactory();
+
+        $this->testObj = new ilTestManScoringParticipantNotification(0, 0);
+    }
+
     public function testConstruct(): void
     {
-        $ilTestManScoringParticipantNotification = new ilTestManScoringParticipantNotification(0, 0);
-        $this->assertInstanceOf(ilTestManScoringParticipantNotification::class, $ilTestManScoringParticipantNotification);
+        $this->assertInstanceOf(ilTestManScoringParticipantNotification::class, $this->testObj);
     }
 
     public function tetSend(): void
@@ -28,9 +39,8 @@ class ilTestManScoringParticipantNotificationTest extends ilTestBaseTestCase
      */
     public function testGetAndSetRecipient(int $IO): void
     {
-        $ilTestManScoringParticipantNotification = new ilTestManScoringParticipantNotification(0, 0);
-        $this->assertNull(self::callMethod($ilTestManScoringParticipantNotification, 'setRecipient', [$IO]));
-        $this->assertEquals($IO, self::callMethod($ilTestManScoringParticipantNotification, 'getRecipient'));
+        $this->assertNull(self::callMethod($this->testObj, 'setRecipient', [$IO]));
+        $this->assertEquals($IO, self::callMethod($this->testObj, 'getRecipient'));
     }
 
     public function dataProviderGetAndSetRecipient(): array

@@ -7,16 +7,25 @@ use ilTestPage;
 
 class ilTestPageTest extends ilTestBaseTestCase
 {
+    private ilTestPage $testObj;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->addGlobal_ilUser();
+
+        $this->testObj = new ilTestPage();
+    }
+
     public function testConstruct(): void
     {
-        $ilTestPage = new ilTestPage();
-        $this->assertInstanceOf(ilTestPage::class, $ilTestPage);
+        $this->assertInstanceOf(ilTestPage::class, $this->testObj);
     }
 
     public function testGetParentType(): void
     {
-        $ilTestPage = new ilTestPage();
-        $this->assertEquals('tst', $ilTestPage->getParentType());
+        $this->assertEquals('tst', $this->testObj->getParentType());
     }
 
     /**
@@ -24,10 +33,9 @@ class ilTestPageTest extends ilTestBaseTestCase
      */
     public function testCreatePageWithNextId(int $IO): void
     {
-        $ilTestPage = new ilTestPage();
         $ilTestPageReflection = new \ReflectionClass(ilTestPage::class);
         $property = $ilTestPageReflection->getProperty('db');
-        $property->setValue($ilTestPage, $this->createConfiguredMock(\ilDBInterface::class, [
+        $property->setValue($this->testObj, $this->createConfiguredMock(\ilDBInterface::class, [
             'query' => $this->createConfiguredMock(\ilDBStatement::class, [
                 'fetchAssoc' => [
                     'last_id' => $IO,
@@ -35,7 +43,7 @@ class ilTestPageTest extends ilTestBaseTestCase
             ]),
         ]));
 
-        $this->assertEquals($IO, $ilTestPage->createPageWithNextId());
+        $this->assertEquals($IO, $this->testObj->createPageWithNextId());
     }
 
     public function createPageWithNextIdDataProvider(): array
