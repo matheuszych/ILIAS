@@ -225,7 +225,6 @@ class ilObjTestSettingsMainGUI extends ilTestSettingsGUI
         if ($new_question_set_type !== $current_question_set_type
             && $current_question_config->doesQuestionSetRelatedDataExist()) {
             $modal = $this->populateConfirmationModal($current_question_set_type, $new_question_set_type);
-            $form = $this->buildForm(self::CMD_CONFIRMED_SAVE_FORM)->withRequest($this->request);
             $this->showForm($form, $modal);
             return;
         }
@@ -242,7 +241,7 @@ class ilObjTestSettingsMainGUI extends ilTestSettingsGUI
         $this->showForm();
     }
 
-    private function buildForm(string $form_command = self::CMD_SAVE_FORM): StandardForm
+    private function buildForm(): StandardForm
     {
         $lng = $this->lng;
         $input_factory = $this->ui->factory()->input();
@@ -276,7 +275,7 @@ class ilObjTestSettingsMainGUI extends ilTestSettingsGUI
         $inputs = array_merge($main_inputs, $this->getAdditionalFunctionalitySettingsSections($environment));
 
         return $input_factory->container()->form()->standard(
-            $this->ctrl->getFormActionByClass(self::class, $form_command),
+            $this->ctrl->getFormActionByClass(self::class, self::CMD_SAVE_FORM),
             $inputs
         )->withAdditionalTransformation($this->getFormConstraints());
     }

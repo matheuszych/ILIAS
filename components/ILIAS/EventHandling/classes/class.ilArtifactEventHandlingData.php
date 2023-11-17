@@ -33,7 +33,7 @@ class ilArtifactEventHandlingData
      */
     protected function readEventHandlingData(): array
     {
-        return require self::EVENT_HANDLING_DATA_PATH;
+        return require __DIR__ . "/../../../" . self::EVENT_HANDLING_DATA_PATH;
     }
 
     /**
@@ -43,9 +43,9 @@ class ilArtifactEventHandlingData
     {
         return in_array(
             [
-                "component"             => $component,
-                "type"                  => $type,
-                "type_specification"    => $type_specification
+                "component" => $component,
+                "type" => $type,
+                "type_specification" => $type_specification
             ],
             $this->event_handling_data,
             true
@@ -60,9 +60,9 @@ class ilArtifactEventHandlingData
     {
         if ($this->hasEvent($component, $type, $type_specification)) {
             return [
-                "component"             => $component,
-                "type"                  => $type,
-                "type_specification"    => $type_specification
+                "component" => $component,
+                "type" => $type,
+                "type_specification" => $type_specification
             ];
         }
 
