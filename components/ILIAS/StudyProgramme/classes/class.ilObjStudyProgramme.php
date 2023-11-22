@@ -1099,7 +1099,14 @@ class ilObjStudyProgramme extends ilContainer
      */
     public function hasAssignments(): bool
     {
-        return count($this->getAssignments()) > 0;
+        $filter = new ilPRGAssignmentFilter($this->lng);
+        $count = $this->assignment_repository->countAllForNodeIsContained(
+            $this->getId(),
+            null,
+            $filter
+        );
+        return $count > 0;
+
     }
 
     /**
@@ -1143,12 +1150,16 @@ class ilObjStudyProgramme extends ilContainer
      */
     public function hasRelevantProgresses(): bool
     {
-        $assignments = $this->getAssignments();
-        $relevant = array_filter(
-            $assignments,
-            fn($ass) => $ass->getProgressForNode($this->getId())->isRelevant()
+        $filter = new ilPRGAssignmentFilter($this->lng);
+        $filter = $filter->withValues([
+            'prg_status_hide_irrelevant' => true
+        ]);
+        $count = $this->assignment_repository->countAllForNodeIsContained(
+            $this->getId(),
+            null,
+            $filter
         );
-        return count($relevant) > 0;
+        return $count > 0;
     }
 
     public function getIdsOfUsersWithRelevantProgress(): array

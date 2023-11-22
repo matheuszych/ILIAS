@@ -338,9 +338,7 @@ class ilObjFolderGUI extends ilContainerGUI
      */
     public function showSummaryObject(): void
     {
-        $this->ctrl->setCmd("showSummary");
-        $this->ctrl->setCmdClass("ilinfoscreengui");
-        $this->infoScreen();
+        $this->ctrl->redirectByClass(ilInfoScreenGUI::class, "showSummary");
     }
 
     protected function afterSave(ilObject $new_object): void
@@ -362,9 +360,7 @@ class ilObjFolderGUI extends ilContainerGUI
     */
     public function infoScreenObject(): void
     {
-        $this->ctrl->setCmd("showSummary");
-        $this->ctrl->setCmdClass("ilinfoscreengui");
-        $this->infoScreen();
+        $this->ctrl->redirectByClass(ilInfoScreenGUI::class, "showSummary");
     }
 
     /**
@@ -550,10 +546,7 @@ class ilObjFolderGUI extends ilContainerGUI
             }
 
             if (ilSession::get('crs_timings')) {
-                $course_content_obj = new ilCourseContentGUI($this);
-                $this->ctrl->setCmdClass(get_class($course_content_obj));
-                $this->ctrl->setCmd('editUserTimings');
-                $this->ctrl->forwardCommand($course_content_obj);
+                $this->ctrl->redirectByClass(ilCourseContentGUI::class, 'editUserTimings');
                 return;
             }
         }

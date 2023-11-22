@@ -114,9 +114,9 @@ class ilObjBookingPoolGUI extends ilObjectGUI
             if ($ilUser->getId() !== ANONYMOUS_USER_ID) {
                 if ($this->object->getScheduleType() === ilObjBookingPool::TYPE_NO_SCHEDULE_PREFERENCES &&
                     !$this->checkPermissionBool('write')) {
-                    $this->ctrl->setCmdClass('ilBookingPreferencesGUI');
+                    $this->ctrl->redirectByClass(ilBookingPreferencesGUI::class);
                 } else {
-                    $this->ctrl->setCmdClass('ilBookingObjectGUI');
+                    $this->ctrl->redirectByClass(ilBookingObjectGUI::class);
                 }
                 $next_class = $this->ctrl->getNextClass($this);
             } else {
@@ -271,11 +271,7 @@ class ilObjBookingPoolGUI extends ilObjectGUI
 
         if ($new_tpl_id !== $current_tpl_id) {
             // redirect to didactic template confirmation
-            $this->ctrl->setReturn($this, 'edit');
-            $this->ctrl->setCmdClass('ildidactictemplategui');
-            $this->ctrl->setCmd('confirmTemplateSwitch');
-            $dtpl_gui = new ilDidacticTemplateGUI($this, $new_tpl_id);
-            $this->ctrl->forwardCommand($dtpl_gui);
+            $this->ctrl->redirect(ilDidacticTemplateGUI::class, "confirmTemplateSwitch");
             return;
         }
         parent::afterUpdate();
@@ -604,9 +600,7 @@ class ilObjBookingPoolGUI extends ilObjectGUI
      */
     public function infoScreenObject(): void
     {
-        $this->ctrl->setCmd("showSummary");
-        $this->ctrl->setCmdClass("ilinfoscreengui");
-        $this->infoScreen();
+        $this->ctrl->redirectByClass(ilInfoScreenGUI::class, "showSummary");
     }
 
     public function infoScreen(): string

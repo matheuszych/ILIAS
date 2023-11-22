@@ -769,6 +769,7 @@ div.ilCOPGMediaPrint {
 	}
 }
 
+#copg-table-top-actions,
 #copg-top-actions {
 	padding: 0 $il-padding-xlarge-horizontal;
 }
@@ -797,6 +798,7 @@ p#copg-auto-save {
 	> .dropdown {
 		overflow: hidden;
 		position: static;
+		display: block;
 		> ul {
 			position: absolute;
 			z-index: 10;
