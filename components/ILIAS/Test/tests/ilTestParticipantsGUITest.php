@@ -55,6 +55,7 @@ class ilTestParticipantsGUITest extends ilTestBaseTestCase
             $DIC->database(),
             $DIC->tabs(),
             $DIC->toolbar(),
+            $this->createMock(\ILIAS\Test\InternalRequestService::class),
         );
     }
 
