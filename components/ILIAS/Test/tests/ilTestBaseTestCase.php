@@ -143,6 +143,10 @@ class ilTestBaseTestCase extends TestCase
         $account->fullname = 'Esther Tester';
 
         $mock->account = $account;
+        $mock->ini_ilias = $this->createMock(ilIniFile::class);
+        $ilErrorHandlingMock = $this->createMock(ilErrorHandling::class);
+        $ilErrorHandlingMock->WARNING = 0;
+        $mock->error_obj = $ilErrorHandlingMock;
 
         return $mock;
     }
@@ -297,7 +301,6 @@ class ilTestBaseTestCase extends TestCase
     protected function addGlobal_ilClientIniFile(): void
     {
         $this->setGlobalVariable('ilClientIniFile', $this->createMock(ilIniFile::class));
-//        $this->getMockBuilder(ilIniFile::class)->disableOriginalConstructor()->getMock();
     }
 
     protected function addGlobal_ilLoggerFactory(): void

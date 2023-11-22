@@ -2,7 +2,7 @@
 
 class ilTestManScoringParticipantNotificationTest extends ilTestBaseTestCase
 {
-    private ilTestMailNotification $testObj;
+    private ilTestManScoringParticipantNotification $testObj;
 
     protected function setUp(): void
     {

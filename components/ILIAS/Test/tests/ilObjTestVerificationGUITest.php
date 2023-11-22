@@ -9,6 +9,16 @@ class ilObjTestVerificationGUITest extends ilTestBaseTestCase
         parent::setUp();
 
         $this->addGlobal_ilLoggerFactory();
+        $this->addGlobal_ilCtrl();
+        $this->addGlobal_ilTabs();
+        $this->addGlobal_ilLocator();
+        $this->addGlobal_ilUser();
+        $this->addGlobal_ilAccess();
+        $this->addGlobal_ilToolbar();
+        $this->addGlobal_ilRbacAdmin();
+        $this->addGlobal_rbacsystem();
+        $this->addGlobal_rbacreview();
+        $this->addGlobal_ilObjDataCache();
 
         $this->testObj = new ilObjTestVerificationGUI(
             0,

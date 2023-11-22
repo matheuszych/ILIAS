@@ -13,6 +13,7 @@ class ilTestArchiverTest extends ilTestBaseTestCase
         $this->addGlobal_ilTabs();
         $this->addGlobal_ilToolbar();
         $this->addGlobal_ilAccess();
+        $this->addGlobal_ilias();
 
         $this->testObj = new ilTestArchiver(0, 0);
     }

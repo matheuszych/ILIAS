@@ -20,9 +20,16 @@ class ilObjAssessmentFolderGUITest extends ilTestBaseTestCase
         $this->addGlobal_ilTabs();
         $this->addGlobal_objectService();
 
+        $mock = Mockery::mock('overload:ilObjectFactory');
+        $mock
+            ->shouldReceive('getInstanceByRefId')
+            ->andReturn(
+                $this->createMock(ilObject::class),
+            );
+
         $this->testObj = new ilObjAssessmentFolderGUI(
             null,
-            0,
+            1, // 0 is not allowed
             true,
             true,
         );
