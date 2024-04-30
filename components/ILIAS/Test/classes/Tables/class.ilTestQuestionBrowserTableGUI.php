@@ -18,12 +18,16 @@
 
 declare(strict_types=1);
 
+use ILIAS\Data\Factory as DataFactory;
 use ILIAS\HTTP\GlobalHttpState;
+use ILIAS\Modules\Test\QuestionPoolLinkedTitleBuilder;
+use ILIAS\Notes\Service as NotesService;
 use ILIAS\Refinery\Factory as Refinery;
+use ILIAS\Taxonomy\DomainService as TaxonomyService;
+use ILIAS\Test\InternalRequestService;
+use ILIAS\UI\Component\Input\Container\Filter\Standard as Filter;
 use ILIAS\UI\Factory as UIFactory;
 use ILIAS\UI\Renderer as UIRenderer;
-use ILIAS\Test\InternalRequestService;
-use ILIAS\Modules\Test\QuestionPoolLinkedTitleBuilder;
 
 /**
  * @author Helmut Schottmüller <ilias@aurealis.de>
@@ -45,7 +49,7 @@ class ilTestQuestionBrowserTableGUI extends ilTable2GUI
     public const CMD_BROWSE_QUESTIONS = 'browseQuestions';
     public const CMD_APPLY_FILTER = 'applyFilter';
     public const CMD_RESET_FILTER = 'resetFilter';
-    public const CMD_INSERT_QUESTIONS = 'insertQuestions';
+    public const CMD_INSERT_QUESTIONS = 'insert';
 
     private bool $writeAccess = false;
 
@@ -65,7 +69,15 @@ class ilTestQuestionBrowserTableGUI extends ilTable2GUI
         private UIFactory $ui_factory,
         private UIRenderer $ui_renderer,
         private InternalRequestService $testrequest,
-        private ILIAS\TestQuestionPool\QuestionInfoService $questioninfo
+        private ILIAS\TestQuestionPool\QuestionInfoService $questioninfo,
+        private DataFactory $data_factory,
+        private ilRbacSystem $rbac_system,
+        private TaxonomyService $taxonomy,
+        private NotesService $notes_service,
+        private int $parent_obj_id,
+        private int $request_ref_id,
+        private ilUIService $ui_service,
+        protected ilLanguage $lng
     ) {
         $this->setId('qpl_brows_tabl_' . $this->test_obj->getId());
 
@@ -111,12 +123,7 @@ class ilTestQuestionBrowserTableGUI extends ilTable2GUI
         return $this->writeAccess;
     }
 
-    public function init(): void
-    {
-        if ($this->hasWriteAccess()) {
-            $this->addMultiCommand(self::CMD_INSERT_QUESTIONS, $this->lng->txt('insert'));
-        }
-    }
+    public function init(): void {}
 
     public function executeCommand(): bool
     {
@@ -139,57 +146,119 @@ class ilTestQuestionBrowserTableGUI extends ilTable2GUI
 
     private function browseQuestionsCmd(): bool
     {
-        $this->setData($this->getQuestionsData());
-
-        $this->main_tpl->setContent($this->ctrl->getHTML($this));
+        $this->main_tpl->setContent($this->getTable());
         return true;
     }
 
-    private function applyFilterCmd(): void
+    protected function getTable(): string
     {
-        $this->writeFilterToSession();
-        $this->ctrl->redirect($this, self::CMD_BROWSE_QUESTIONS);
+        $table = new QuestionsFromPoolTable(
+            $this->db,
+            $this->lng,
+            $this->refinery,
+            $this->component_repository,
+            $this->notes_service,
+            $this->ui_factory,
+            $this->ui_renderer,
+            $this->data_factory,
+            $this->rbac_system,
+            $this->taxonomy,
+            $this->ctrl,
+            $this,
+            $this->test_obj->getId(),
+            $this->request_ref_id,
+        );
+
+        $table->setParentObjId($this->parent_obj_id);
+        $filter = $table->getFilter($this->ui_service, $this->ctrl->getLinkTarget($this, self::CMD_BROWSE_QUESTIONS));
+
+        return $this->ui_renderer->render([
+            $filter,
+            $this
+                ->filterTable($table, $filter)
+                ->getTable()
+                ->withRequest($this->http_state->request())
+        ]);
     }
 
-    private function resetFilterCmd(): void
+    private function filterTable(QuestionsFromPoolTable $table, Filter $filter): QuestionsFromPoolTable
     {
-        $this->resetFilter();
-        $this->ctrl->redirect($this, self::CMD_BROWSE_QUESTIONS);
+        if ($filter_params = $this->ui_service->filter()->getData($filter)) {
+            foreach (array_filter($filter_params) as $item => $value) {
+
+                switch ($item) {
+                    case 'title':
+                    case 'description':
+                    case 'author':
+                    case 'lifecycle':
+                    case 'type':
+                        if ($value !== '') {
+                            $table->addFieldFilter($item, $value);
+                        }
+                        break;
+                    case 'commented':
+                        if ($value !== '') {
+                            $table->setCommentFilter((int) $value);
+                        }
+                        break;
+                    case 'taxonomies':
+                        if($value === '') {
+                            $table->addTaxonomyFilterNoTaxonomySet(true);
+                            breaK;
+                        }
+
+                        $tax_nodes = explode('-', $value);
+                        $table->addTaxonomyFilter(
+                            array_shift($tax_nodes),
+                            $tax_nodes,
+                            $this->test_obj->getId(),
+                            $this->test_obj->getType()
+                        );
+                        break;
+                    default:
+                        $table->addFieldFilter($item, $value);
+                }
+            }
+        }
+
+        $table->load();
+
+        return $table;
     }
 
-    private function insertQuestionsCmd(): void
+    private function insertCmd(): void
     {
         $selected_array = [];
-        if ($this->http_state->wrapper()->post()->has('q_id')) {
-            $selected_array = $this->http_state->wrapper()->post()->retrieve(
-                'q_id',
+        $key = 'question_ids';
+        if ($this->http_state->wrapper()->query()->has($key)) {
+            $selected_array = $this->http_state->wrapper()->query()->retrieve(
+                $key,
                 $this->refinery->kindlyTo()->listOf($this->refinery->kindlyTo()->int())
             );
         }
 
-        if ($selected_array === []) {
-            $this->main_tpl->setOnScreenMessage('info', $this->lng->txt("tst_insert_missing_question"), true);
+        if (empty($selected_array)) {
+            $this->main_tpl->setOnScreenMessage('info', $this->lng->txt('tst_insert_missing_question'), true);
             $this->ctrl->redirect($this, self::CMD_BROWSE_QUESTIONS);
         }
 
-        $testQuestionSetConfig = $this->buildTestQuestionSetConfig();
+        $test_question_set_config = $this->buildTestQuestionSetConfig();
+        $mans_coring = false;
 
-        $manscoring = false;
+        foreach ($selected_array as $value) {
+            $this->test_obj->insertQuestion($test_question_set_config, $value);
 
-        foreach ($selected_array as $key => $value) {
-            $last_question_id = $this->test_obj->insertQuestion($testQuestionSetConfig, $value);
-
-            if (!$manscoring) {
-                $manscoring |= assQuestion::_needsManualScoring($value);
+            if (!$mans_coring) {
+                $mans_coring |= assQuestion::_needsManualScoring($value);
             }
         }
 
-        $this->test_obj->saveCompleteStatus($testQuestionSetConfig);
+        $this->test_obj->saveCompleteStatus($test_question_set_config);
 
-        if ($manscoring) {
-            $this->main_tpl->setOnScreenMessage('info', $this->lng->txt("manscoring_hint"), true);
+        if ($mans_coring) {
+            $this->main_tpl->setOnScreenMessage('info', $this->lng->txt('manscoring_hint'), true);
         } else {
-            $this->main_tpl->setOnScreenMessage('success', $this->lng->txt("tst_questions_inserted"), true);
+            $this->main_tpl->setOnScreenMessage('success', $this->lng->txt('tst_questions_inserted'), true);
         }
 
         $this->ctrl->redirectByClass($this->getBackTargetCmdClass(), $this->getBackTargetCommand());

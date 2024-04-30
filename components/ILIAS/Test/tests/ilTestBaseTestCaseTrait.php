@@ -26,6 +26,7 @@ use ILIAS\HTTP\Services;
 use ILIAS\UI\Implementation\Factory;
 use ILIAS\Refinery\Factory as RefineryFactory;
 use ILIAS\Refinery\Random\Group as RandomGroup;
+use Psr\Http\Message\ServerRequestInterface;
 
 trait ilTestBaseTestCaseTrait
 {
@@ -214,8 +215,28 @@ trait ilTestBaseTestCaseTrait
 
     protected function addGlobal_http(): void
     {
-        $http_mock = $this->getMockBuilder(Services::class)->disableOriginalConstructor()->getMock();
-        $http_mock->method('request')->willReturn($this->getMockBuilder(\Psr\Http\Message\ServerRequestInterface::class)->disableOriginalConstructor()->getMock());
+        $server_request_mock = $this
+            ->getMockBuilder(ServerRequestInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock()
+        ;
+
+        $server_request_mock
+            ->method('getQueryParams')
+            ->willReturn([])
+        ;
+
+        $http_mock = $this
+            ->getMockBuilder(Services::class)
+            ->disableOriginalConstructor()
+            ->getMock()
+        ;
+
+        $http_mock
+            ->method('request')
+            ->willReturn($server_request_mock)
+        ;
+
         $this->setGlobalVariable('http', $http_mock);
     }
 

@@ -18,16 +18,18 @@
 
 declare(strict_types=1);
 
+use ILIAS\Data\Factory as DataFactory;
+use ILIAS\DI\LoggingServices;
+use ILIAS\GlobalScreen\Services as GlobalScreen;
+use ILIAS\HTTP\Services as HTTPServices;
 use ILIAS\Refinery\ConstraintViolationException;
+use ILIAS\Skill\Service\SkillService;
+use ILIAS\Taxonomy\DomainService as TaxonomyService;
+use ILIAS\Test\InternalRequestService;
+use ILIAS\Test\QuestionIdentifiers;
 use ILIAS\TestQuestionPool\QuestionInfoService;
 use ILIAS\UI\Factory as UIFactory;
 use ILIAS\UI\Renderer as UIRenderer;
-use ILIAS\HTTP\Services as HTTPServices;
-use ILIAS\DI\LoggingServices;
-use ILIAS\Skill\Service\SkillService;
-use ILIAS\Test\InternalRequestService;
-use ILIAS\GlobalScreen\Services as GlobalScreen;
-use ILIAS\Test\QuestionIdentifiers;
 
 /**
  * Class ilObjTestGUI
@@ -97,6 +99,9 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
     protected ilObjectDataCache $obj_data_cache;
     protected SkillService $skills_service;
     protected InternalRequestService $testrequest;
+    protected DataFactory $data_factory;
+    protected TaxonomyService $taxonomy;
+    protected ilUIService $ui_service;
 
     protected bool $create_question_mode;
 
@@ -126,6 +131,9 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
         $this->type = 'tst';
         $this->testrequest = $DIC->test()->internal()->request();
         $this->archives = $DIC->legacyArchives();
+        $this->data_factory = new DataFactory();
+        $this->taxonomy = $DIC->taxonomy()->domain();
+        $this->ui_service = $DIC->uiService();
 
         $ref_id = 0;
         if ($this->testrequest->hasRefId() && is_numeric($this->testrequest->getRefId())) {
@@ -608,7 +616,15 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
                     $this->ui_factory,
                     $this->ui_renderer,
                     $this->testrequest,
-                    $this->questioninfo
+                    $this->questioninfo,
+                    $this->data_factory,
+                    $this->rbac_system,
+                    $this->taxonomy,
+                    $this->notes_service,
+                    $this->obj_id,
+                    $this->testrequest->getRefId(),
+                    $this->ui_service,
+                    $this->lng
                 );
                 $gui->setWriteAccess($this->access->checkAccess("write", "", $this->ref_id));
                 $gui->init();
