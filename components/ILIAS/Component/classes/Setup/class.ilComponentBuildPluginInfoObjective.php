@@ -33,30 +33,38 @@ class ilComponentBuildPluginInfoObjective extends Setup\Artifact\BuildArtifactOb
     public function build(): Setup\Artifact
     {
         $data = [];
-        foreach (["components/ILIAS"] as $type) {
-            $components = $this->scanDir(static::BASE_PATH . $type);
-            foreach ($components as $component) {
-                if ($this->isDotFile($component)
-                    || ! $this->isDir(static::BASE_PATH . "$type/$component")) continue;
-                $slots = $this->scanDir(static::BASE_PATH . "$type/$component");
-                foreach ($slots as $slot) {
-                    if ($this->isDotFile($slot)
-                        || ! $this->isDir(static::BASE_PATH . "$type/$component/$slot")) continue;
-                    $plugins = $this->scanDir(static::BASE_PATH . "$type/$component/$slot");
-                    foreach ($plugins as $plugin) {
-                        if ($this->isDotFile($plugin)
-                            || ! $this->isDir(static::BASE_PATH . "$type/$component/$slot/$plugin")) continue;
-                        $this->addPlugin($data, $type, $component, $slot, $plugin);
+
+        foreach ($this->scanDir(static::BASE_PATH) as $component) {
+            if ($this->isDotFileOrIsNotDir($component, static::BASE_PATH . $component)) {
+                continue;
+            }
+
+            foreach ($this->scanDir(static::BASE_PATH . $component) as $slot) {
+                if ($this->isDotFileOrIsNotDir($slot, static::BASE_PATH . "$component/$slot")) {
+                    continue;
+                }
+
+                foreach ($this->scanDir(static::BASE_PATH . "$component/$slot") as $plugin) {
+                    if ($this->isDotFileOrIsNotDir($plugin, static::BASE_PATH . "$component/$slot/$plugin")) {
+                        continue;
                     }
+
+                    $this->addPlugin($data, $component, $slot, $plugin);
                 }
             }
         }
+
         return new Setup\Artifact\ArrayArtifact($data);
     }
 
-    protected function addPlugin(array &$data, string $type, string $component, string $slot, string $plugin): void
+    private function isDotFileOrIsNotDir(string $file, $dir): bool
     {
-        $plugin_path = $this->buildPluginPath($type, $component, $slot, $plugin);
+        return $this->isDotFile($file) || !$this->isDir($dir);
+    }
+
+    protected function addPlugin(array &$data, string $component, string $slot, string $plugin): void
+    {
+        $plugin_path = $this->buildPluginPath($component, $slot, $plugin);
         $plugin_php = $plugin_path . static::PLUGIN_PHP;
         if (!$this->fileExists($plugin_php)) {
             throw new \RuntimeException(
@@ -92,7 +100,7 @@ class ilComponentBuildPluginInfoObjective extends Setup\Artifact\BuildArtifactOb
         }
 
         $data[$id] = [
-            $type,
+            ilComponentInfo::TYPES[0],
             $component,
             $slot,
             $plugin,
@@ -131,11 +139,11 @@ class ilComponentBuildPluginInfoObjective extends Setup\Artifact\BuildArtifactOb
 
     protected function isDotFile(string $file): bool
     {
-        return ( substr($file, 0, 1) === '.' );
+        return $file[0] === '.';
     }
 
-    protected function buildPluginPath(string $type, string $component, string $slot, string $plugin): string
+    protected function buildPluginPath(string $component, string $slot, string $plugin): string
     {
-        return static::BASE_PATH . "$type/$component/$slot/$plugin/";
+        return static::BASE_PATH . "$component/$slot/$plugin/";
     }
 }

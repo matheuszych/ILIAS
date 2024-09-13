@@ -60,7 +60,7 @@ class ilPluginSlotInfo
 
     public function getQualifiedName(): string
     {
-        return $this->component->getQualifiedName() . "/" . $this->getName();
+        return $this->component->getName() . "/" . $this->getName();
     }
 
     public function getPath(): string
