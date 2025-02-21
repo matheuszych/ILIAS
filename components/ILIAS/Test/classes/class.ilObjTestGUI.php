@@ -1051,6 +1051,7 @@ class ilObjTestGUI extends ilObjectGUI implements ilCtrlBaseClassInterface, ilDe
     protected function forwardCommandToQuestion(string $cmd): void
     {
         $this->create_question_mode = true;
+        $this->prepareOutput();
 
         try {
             $qid = $this->fetchAuthoringQuestionIdParameter();
