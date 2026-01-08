@@ -100,14 +100,12 @@ class ilAssQuestionPageGUI extends ilPageObjectGUI
     public function postOutputProcessing(string $a_output): string
     {
         $a_output = str_replace(
-            self::TEMP_PRESENTATION_TITLE_PLACEHOLDER,
-            $this->getOriginalPresentationTitle(),
+            [self::TEMP_PRESENTATION_TITLE_PLACEHOLDER, "<h1 class=\"ilc_page_title_PageTitle\">{$this->getOriginalPresentationTitle()}</h1>"],
+            [$this->getOriginalPresentationTitle(), "<h2 class=\"ilc_page_title_PageTitle\">{$this->getOriginalPresentationTitle()}</h2>"],
             $a_output
         );
 
-        $a_output = preg_replace("/src=\"\\.\\//ims", "src=\"" . ILIAS_HTTP_PATH . "/", $a_output);
-
-        return $a_output;
+        return preg_replace("/src=\"\\.\\//ims", "src=\"" . ILIAS_HTTP_PATH . "/", $a_output);
     }
 
     // fau: testNav - support the addition of question info and actions below the title
