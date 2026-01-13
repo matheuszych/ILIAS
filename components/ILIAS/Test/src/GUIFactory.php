@@ -84,7 +84,8 @@ class GUIFactory
         $this->internal['manscoring.positionsfactory'] = fn(\ilObjTest $test_obj): PositionsFactory =>
             new PositionsFactory(
                 $test_obj,
-                $this->test_dic['question.general_properties.repository']
+                $this->test_dic['question.general_properties.repository'],
+                $this->global_dic['ilAccess']
             );
 
         $this->internal['manscoring.testscoring'] = fn(\ilObjTest $test_obj): TestScoring =>
