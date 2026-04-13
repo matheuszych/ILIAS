@@ -22,14 +22,16 @@ namespace ILIAS\Test\Scoring\Manual;
 
 use ILIAS\TestQuestionPool\Questions\GeneralQuestionPropertiesRepository;
 
-class PositionsFactory
+abstract class PositionsFactory
 {
     public function __construct(
-        private readonly \ilObjTest $test_obj,
-        private readonly GeneralQuestionPropertiesRepository $question_repo,
-        private readonly \ilAccess $access
-    ) {;
+        protected readonly \ilObjTest $test_obj,
+        protected readonly GeneralQuestionPropertiesRepository $question_repo,
+        protected readonly \ilAccess $access
+    ) {
     }
+
+    abstract protected function getTestParticipants(): array;
 
     public function get(): Positions
     {
@@ -37,9 +39,7 @@ class PositionsFactory
         $user_attempts = [];
         $question_properties = [];
 
-        $test_participants = $this->filterParticipantsIfOrgUnitsEnabled($this->test_obj->getTestParticipants());
-
-        foreach (array_keys($test_participants) as $usr_active_id) {
+        foreach (array_keys($this->getTestParticipants()) as $usr_active_id) {
             $attempt = \ilObjTest::_getResultPass($usr_active_id);
             $user_attempts[$usr_active_id] = $attempt;
             $user_questions[$usr_active_id] = $this->test_obj->isRandomTest()
@@ -75,24 +75,6 @@ class PositionsFactory
             $user_questions,
             $user_attempts,
             $question_properties
-        );
-    }
-
-    private function filterParticipantsIfOrgUnitsEnabled(array $test_participants): array
-    {
-        if (!\ilOrgUnitGlobalSettings::getInstance()->isPositionAccessActiveForObject($this->test_obj->getId())) {
-            return $test_participants;
-        }
-
-        $allowed_participants = $this->access->filterUserIdsByPositionOfCurrentUser(
-            \ilOrgUnitOperation::OP_SCORE_PARTICIPANTS,
-            $this->test_obj->getRefId(),
-            array_column($test_participants, 'usr_id')
-        );
-
-        return array_filter(
-            $test_participants,
-            static fn(array $participant): bool => in_array($participant['usr_id'], $allowed_participants, true)
         );
     }
 }

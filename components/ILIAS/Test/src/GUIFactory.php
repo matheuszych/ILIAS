@@ -25,7 +25,9 @@ use ILIAS\Test\Scoring\Manual\ConsecutiveScoringGUI;
 use ILIAS\Test\Scoring\Manual\TestScoring;
 use ILIAS\Test\Scoring\Manual\ConsecutiveScoring;
 use ILIAS\Test\Scoring\Manual\ConsecutiveScoringURLs;
+use ILIAS\Test\Scoring\Manual\OrgUnitPositionsFactory;
 use ILIAS\Test\Scoring\Manual\PositionsFactory;
+use ILIAS\Test\Scoring\Manual\RegularPositionsFactory;
 use ILIAS\UI\URLBuilder;
 use ILIAS\Data\Factory as DataFactory;
 
@@ -82,11 +84,17 @@ class GUIFactory
                 );
 
         $this->internal['manscoring.positionsfactory'] = fn(\ilObjTest $test_obj): PositionsFactory =>
-            new PositionsFactory(
-                $test_obj,
-                $this->test_dic['question.general_properties.repository'],
-                $this->global_dic['ilAccess']
-            );
+            \ilOrgUnitGlobalSettings::getInstance()->isPositionAccessActiveForObject($test_obj->getId())
+                ? new OrgUnitPositionsFactory(
+                    $test_obj,
+                    $this->test_dic['question.general_properties.repository'],
+                    $this->global_dic['ilAccess']
+                )
+                : new RegularPositionsFactory(
+                    $test_obj,
+                    $this->test_dic['question.general_properties.repository'],
+                    $this->global_dic['ilAccess']
+                );
 
         $this->internal['manscoring.testscoring'] = fn(\ilObjTest $test_obj): TestScoring =>
                 new TestScoring(
