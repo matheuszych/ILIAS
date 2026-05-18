@@ -20,6 +20,7 @@ declare(strict_types=1);
 
 namespace ILIAS\UI\Implementation\Component\Input\Field;
 
+use ILIAS\Language\Language;
 use ILIAS\UI\Component as C;
 use ILIAS\Data\Factory as DataFactory;
 use ILIAS\Data\DateFormat\DateFormat;
@@ -41,6 +42,8 @@ class DateTime extends FormInput implements C\Input\Field\DateTime
 
     public const TIME_FORMAT = 'HH:mm';
 
+    protected Language $lng;
+
     protected DateFormat $format;
     protected ?DateTimeImmutable $min_date = null;
     protected ?DateTimeImmutable $max_date = null;
@@ -56,10 +59,12 @@ class DateTime extends FormInput implements C\Input\Field\DateTime
     public function __construct(
         DataFactory $data_factory,
         \ILIAS\Refinery\Factory $refinery,
+        Language $lng,
         string $label,
         ?string $byline
     ) {
         parent::__construct($data_factory, $refinery, $label, $byline);
+        $this->lng = $lng;
 
         $this->format = $data_factory->dateFormat()->standard();
 
@@ -111,25 +116,13 @@ class DateTime extends FormInput implements C\Input\Field\DateTime
         if (!$this->isDisabled() && $this->getName() !== null) {
             $value = $input->getOr($this->getName(), null);
             if (is_string($value) && $value !== '' && !$this->isClientSideValueOk($value)) {
-                return $this->withInvalidClientValue($value);
+                $clone = clone $this;
+                $clone->value = $value;
+                $clone->content = $this->data_factory->error($this->lng->txt('exc_date_not_valid'));
+                return $clone->withError($this->lng->txt('exc_date_not_valid'));
             }
         }
         return parent::withInput($input);
-    }
-
-    private function withInvalidClientValue(string $value): self
-    {
-        $error_message = '';
-        try {
-            new \DateTimeImmutable($value);
-        } catch (\Throwable $e) {
-            $error_message = $e->getMessage();
-        }
-        $exception = new \UnexpectedValueException($error_message);
-        $clone = clone $this;
-        $clone->value = $value;
-        $clone->content = $this->data_factory->error($exception);
-        return $clone->withError($error_message);
     }
 
     public function withFormat(DateFormat $format): self
